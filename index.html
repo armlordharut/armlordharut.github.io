@@ -1,7 +1,258 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello React!</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Ubuntu Mono', monospace;
+        }
+        .navbar {
+            height: 40px;
+            width: 100%;
+            background-color: lightblue;
+        }
+        .navbar ul {
+            float: right;
+            margin: 0px;
+        }
+        .navbar ul li {
+            display: inline-block;
+            padding: 3px;
+            margin: 10px;
+            border-bottom: 1px solid black;
+        }
+        .card {
+            padding: 5px;
+            margin: 5px;
+            border-radius: 4px;
+            box-shadow: 0px 0px 5px 0px #888888ad;
+            width: 500px;
+            height: auto;
+            left: calc(50% - 250px);
+            position: relative;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .card:hover {
+            box-shadow: 5px 3px 9px 0px #888888ad;
+        }
+        .card-logo {
+            display: block;
+            border-radius: 200px;
+            box-sizing: border-box;
+            border: 1px solid #0000001f;
+            padding: 3px;
+            width:104px;
+            height:104px;
+        }
+        .card-text {
+            display: inline-block;
+            position: absolute;
+            width: 370px;
+            padding: 15px;
+        }
+        .card-logo-holder {
+            display: inline-block;
+        }
+        .card-company {
+            margin-top: 0px;
+            margin-bottom: 5px;
+        }
+        .card-top-part {
+            // margin-bottom: 10px;
+            // padding-bottom: 20px;
+        }
+        .card-middle-part {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #0000001f;
+            border-top: 1px solid #0000001f;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+        .card-icons {
+            margin-top: 5px;
+            color: #3e7db5;
+            font-size: 13px;
+        }
+        .card-glyph {
+            margin-right: 4px;
+        }
+        .card-icons :first-child {
+            margin-bottom: 2px;
+            margin-left: 2px;
+        }
+        .short {
+            width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .short-multi {
+            display: block;
+            display: -webkit-box;
+            height: 48px;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 16px;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card-tag {
+            font-weight: bold;
+        }
+        .card-tag-value {
+            font-style: italic;
+        }
+        .card-tag, .card-tag-value {
+            font-size: 14px;
+        }
+
+        .chevron {
+            position: relative;
+            left: 242px;
+        }
+        .expand {
+            color: #b3b3b3;
+        }
+        .colapsableContainer {
+            height: 0;
+            overflow: hidden;
+            transition: 0.5s linear;
+        }
+        .toggle {
+            display: none;
+        }
+        .toggle:checked ~ .colapsableContainer {
+            height: 122px;
+            padding-top: 10px;
+        }
+        .toggle:checked ~ .card-top-part-border { border-bottom: 1px solid #0000001f; }
+        label .arrow-dn { display: inline-block; }
+        label .arrow-up { display: none; }
+        .toggle:checked ~ label .arrow-dn { display: none; }
+        .toggle:checked ~ label .arrow-up { display: inline-block; }
+
+        a:link, a:visited {
+            color: #3e7db5 !important;
+            text-decoration: none;
+        }​
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+        <ul>
+            <li>Contacts</li>
+            <li>Experience</li>
+            <li>Education</li>
+            <li>Blog</li>
+        </ul>
+    </div>
+    <div id="root"></div>
+    <div id="experience"></div>
+    <script type="text/babel">
+      const experiences = [
+        {
+            Key: 'BuBu34',
+            Company: 'Praemium',
+            Position: 'Software Developer',
+            Description: 'Developing Electronic Account Management, used by financial advisers, for markets in Sydney, London and Hong Kong supporting more than 100k accounts.',
+            Logo: 'img/Praemium.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://www.praemium.com/intl/',
+            Industry: 'Finances (investment), Electronic Account Management',
+            Technologies: 'C#, ASP.NET, Dapper, Angular, Microsoft SQL Server'
+        },
+        {
+            Key: 'Abu123',
+            Company: 'American University of Armenia',
+            Position: 'Adjunct Lecturer',
+            Description: 'Teaching “Computer Organization” course based on my own course materials and syllabus. Course includes high level knowledge of hardware architecture and advanced Assembly language.',
+            Logo: 'img/AUA.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://aua.am',
+            Industry: 'Education',
+            Technologies: 'Assembly, Hardware design'
+        },
+        {
+            Key: 'Kontur000',
+            Company: 'SKB Kontur',
+            Position: 'Software Engineer',
+            Description: 'Developed Electronic Document Management system for governmental customer, including document tracking, management, signage and secure storage. As part of this implemented document signing protocols, document storage and processing. Work is done in a fast-paced agile team. Integrated business requirements, of a new major customer, which yielded in two-fold increase of project’s income.',
+            Logo: 'img/Kontur.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://kontur.ru',
+            Industry: 'Finances (accounting), Electronic Document Management',
+            Technologies: 'C#, ASP.NET Core, EF Core, MVC, Microsoft SQL Server'
+        }
+      ];
+
+      function Card(props) {
+        return (
+          <div className="card">
+            <div className="card-top-part" >
+                <div className="card-logo-holder"><img src={props.value.Logo} alt="Company logo" className="card-logo" /></div>
+                <div className="card-text">
+                    <h3 className="card-company" >{props.value.Company}</h3>
+                    <div>{props.value.Position}</div>
+                    <div className="card-icons">
+                        <div><a href={props.value.Maps} ><i className="card-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
+                        <div><a href={props.value.Web} ><i className="card-glyph fas fa-globe"></i>{props.value.Web}</a></div>
+                    </div>
+                </div>
+            </div>
+            <div className="showHide">
+                <input type="checkbox" className="toggle" id={props.value.Key}/>
+                <label htmlFor={props.value.Key} className="chevron">
+                    <span className="expand">
+                        <span className="arrow-up"><i className="fas fa-chevron-up"></i></span>
+                        <span className="arrow-dn"><i className="fas fa-chevron-down"></i></span>
+                    </span>
+                </label>
+                <div className="colapsableContainer">
+                    <div className="card-middle-part">
+                        <div>
+                            <span className="card-tag">Industry: </span><span className="card-tag-value" >{props.value.Industry}</span>
+                        </div>
+                        <div>
+                            <span className="card-tag">Technologies: </span><span className="card-tag-value" >{props.value.Technologies}</span>
+                        </div>
+                    </div>
+                    <div className="card-bottom-part">
+                        <div className="short-multi">{props.value.Description}</div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        );
+      }
+
+      class Experience extends React.Component {
+        renderJob(job) {
+          return (<Card value={job}/>);
+        }
+
+        render() {
+            var result = [];
+            for (var i = 0; i < experiences.length; i++) { 
+                var job = experiences[i];
+                result.push(this.renderJob(job));
+            }
+            return (<div>{result}</div>);
+        }
+      }
+      
+      ReactDOM.render(<Experience />, document.getElementById('experience'))
+    </script>
+  </body>
 </html>
