@@ -155,7 +155,7 @@
             display: none;
         }
         .center {
-            left: calc(50% - 270px);
+            left: calc(50% - 690px);
             position: relative;
             display: inline-block;
         }
@@ -180,6 +180,16 @@
             border-left: 8px solid white;
             border-right: 8px solid white;
         }
+        .extendedView {
+            height: 800px;
+            width: 800px;
+            position: absolute;
+            top: 0px;
+            left: 580px;
+        }
+        .timeline {
+            display: inline-block;
+        }
 
         a:link, a:visited {
             color: #3e7db5 !important;
@@ -196,12 +206,15 @@
             <li>Blog</li>
         </ul>
     </div>
-    <div class="header">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+    <div class="header"></div>
     <div class="center">
-        <div id="experience" class="sector style-3"></div>
-        <div id="education" class="sector style-3 hidden"></div>
+        <div class="timeline">
+            <div id="experience" class="sector style-3"></div>
+            <div id="education" class="sector style-3 hidden"></div>
+        </div>
+        <div id="article" class="extendedView" ></div>
     </div>
-    <div class="footer">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+    <div class="footer"></div>
     <script type="text/babel">
       const experiences = [
         {
@@ -339,7 +352,47 @@
 
       function Card(props) {
         return (
-          <div className="card">
+          <div className="card" onClick={props.onClick}>
+            <div className="card-top-part" >
+                <div className="card-logo-holder"><img src={props.value.Logo} alt="Company logo" className="card-logo" /></div>
+                <div className="card-text">
+                    <h3 className="card-position" >{props.value.Position}</h3>
+                    <div>{props.value.Company}</div>
+                    <div className="card-icons">
+                        <div><a href={props.value.Maps} ><i className="card-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
+                        <div><a href={props.value.Web} ><i className="card-glyph fas fa-globe"></i>{props.value.Web}</a></div>
+                    </div>
+                </div>
+            </div>
+            <div className="showHide">
+                <input type="checkbox" className="toggle" id={props.value.Key}/>
+                <label htmlFor={props.value.Key} className="chevron">
+                    <span className="expand">
+                        <span className="arrow-up"><i className="fas fa-chevron-up"></i></span>
+                        <span className="arrow-dn"><i className="fas fa-chevron-down"></i></span>
+                    </span>
+                </label>
+                <div className="colapsableContainer">
+                    <div className="card-middle-part">
+                        <div>
+                            <span className="card-tag">Industry: </span><span className="card-tag-value" >{props.value.Industry}</span>
+                        </div>
+                        <div>
+                            <span className="card-tag">Technologies: </span><span className="card-tag-value short" >{props.value.Technologies}</span>
+                        </div>
+                    </div>
+                    <div className="card-bottom-part">
+                        <div className="short-multi">{props.value.Description}</div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        );
+      }
+
+      function Article(props) {
+        return (
+          <div>
             <div className="card-top-part" >
                 <div className="card-logo-holder"><img src={props.value.Logo} alt="Company logo" className="card-logo" /></div>
                 <div className="card-text">
@@ -378,8 +431,14 @@
       }
 
       class Experience extends React.Component {
+
+        clickToExtend(job) {
+            var result = <Article value={job} />;
+            ReactDOM.render(result, document.getElementById('article'));
+        }
+
         renderJob(job) {
-          return (<Card value={job}/>);
+          return (<Card value={job} onClick={() => this.clickToExtend(job)} />);
         }
 
         render() {
