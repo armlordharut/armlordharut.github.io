@@ -32,16 +32,16 @@
             padding: 5px;
             margin: 5px;
             border-radius: 4px;
-            box-shadow: 0px 0px 5px 0px #888888ad;
+            box-shadow: 0px 0px 2px 0px #888888ad;
             width: 500px;
             height: auto;
-            left: calc(50% - 250px);
+            // left: calc(50% - 250px);
             position: relative;
             margin-bottom: 20px;
             padding: 20px;
         }
         .card:hover {
-            box-shadow: 5px 3px 9px 0px #888888ad;
+            box-shadow: 0px 0px 15px 0px #8888884f;
         }
         .card-logo {
             display: block;
@@ -61,7 +61,7 @@
         .card-logo-holder {
             display: inline-block;
         }
-        .card-company {
+        .card-position {
             margin-top: 0px;
             margin-bottom: 5px;
         }
@@ -89,10 +89,13 @@
             margin-left: 2px;
         }
         .short {
-            width: 250px;
+            display: inline-block;
+            width: 400px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            position: relative;
+            top: 2px;
         }
         .short-multi {
             display: block;
@@ -140,6 +143,43 @@
         label .arrow-up { display: none; }
         .toggle:checked ~ label .arrow-dn { display: none; }
         .toggle:checked ~ label .arrow-up { display: inline-block; }
+        .sector {
+            width: 560px;
+            display: inline-block;
+            padding: 0px 10px 10px 10px;
+            margin-top: 10px;
+            overflow: auto;
+            height: 800px;
+        }
+        .hidden {
+            display: none;
+        }
+        .center {
+            left: calc(50% - 270px);
+            position: relative;
+            display: inline-block;
+        }
+
+        .style-3::-webkit-scrollbar-track
+        {
+            background-color: #e0e0e0;
+            border-left: 9px solid white;
+            border-right: 9px solid white;
+        }
+
+        .style-3::-webkit-scrollbar
+        {
+            width: 20px;
+            background-color: #000000;
+        }
+
+        .style-3::-webkit-scrollbar-thumb
+        {
+            background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+            /* border-radius: 7px; */
+            border-left: 8px solid white;
+            border-right: 8px solid white;
+        }
 
         a:link, a:visited {
             color: #3e7db5 !important;
@@ -156,8 +196,12 @@
             <li>Blog</li>
         </ul>
     </div>
-    <div id="root"></div>
-    <div id="experience"></div>
+    <div class="header">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+    <div class="center">
+        <div id="experience" class="sector style-3"></div>
+        <div id="education" class="sector style-3 hidden"></div>
+    </div>
+    <div class="footer">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
     <script type="text/babel">
       const experiences = [
         {
@@ -195,6 +239,101 @@
             Web: 'https://kontur.ru',
             Industry: 'Finances (accounting), Electronic Document Management',
             Technologies: 'C#, ASP.NET Core, EF Core, MVC, Microsoft SQL Server'
+        },
+        {
+            Key: 'Redkite563',
+            Company: 'Redkite',
+            Position: 'Senior Software Engineer',
+            Description: 'Worked on internal and customer projects: -    Bootstrapping an in-house, AI-based text processing, text analysis pipeline using ML and NLP algorithms. Main focus was on using Neural Network for predictions based on text content and context analysis, and fine-tuning processed data using NLP algorithms -    Full-stack development of custom-tailored Learning Management System (LMS) for Mechner Foundation, an educational innovation non-profit. I worked on defining specification, architectural design back- and front-end development in collaboration with foundation’s stakeholders and educators. LMS was successfully piloted at foundation’s private schools and later expanded to public schools. -    Developed warehouse automation tools for Carson-Dellosa Publishing LLC, an educational publisher. Work included communicating with management, warehouse staff and third-party vendors to define needs and goals. As a result, a web-based tool was created integrated into existing warehouse/logistics management software helping improve efficiency of day-to-day operations.',
+            Logo: 'img/Redkite.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://redkite.io/',
+            Industry: 'e-Commerce, behaiovarol Science',
+            Technologies: 'C#, .NET Core, WCF, SOAP, MVC, Node.js (Express, MongoDb), JQuery/CSS, Python (TensorFlow, NLTK, Flask), Microsoft SQL Server'
+        },
+        {
+            Key: 'Abu124',
+            Company: 'American University of Armenia',
+            Position: 'Teaching Associate',
+            Description: 'Conducting problem solving sessions in C++ and Java languages for CS department students. Assisting students in understanding their homework assignment and projects requirements.',
+            Logo: 'img/AUA.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://aua.am',
+            Industry: 'Education',
+            Technologies: 'Algorithms, C++, Java, Design Patterns, Data Structures'
+        },
+        {
+            Key: 'SNPS58-96',
+            Company: 'Synopsys',
+            Position: 'R&D Engineer I',
+            Description: 'Worked on various projects, oriented on customer-specific feature implementation in Electronic Design Automation industry. Developed user interface and report generation for manufacturing yield analysis software. As part of internal research group worked on continuous improvement of development process, particularly developed a tool for daily quality report extraction and analysis. The work included hyperparameter tweaking of an in-house Machine Learning algorithm used for yield prediction. This helped to improve development cycle and for main product to become industry leading yield analysis tool.',
+            Logo: 'img/Synopsys.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://www.synopsys.com/',
+            Industry: 'Hardware Design, EDA (Electronic Design Automation)',
+            Technologies: 'Java, Python, Tcl, Perl'
+        },
+        {
+            Key: 'SNPS58-97',
+            Company: 'Synopsys',
+            Position: 'Quality Engineer I',
+            Description: 'Worked on automating software QA, including regression and UI testing. Main result was developing a new multi-platform (Linux and Windows) regression test framework, defined a new standard for the test case development. Automated parallelization of test runs for Windows platform.',
+            Logo: 'img/Synopsys.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://www.synopsys.com/',
+            Industry: 'Hardware Design, EDA (Electronic Design Automation)',
+            Technologies: 'Perl, Python, C#'
+        },
+        {
+            Key: 'SNPS58-98',
+            Company: 'Synopsys',
+            Position: 'Internship',
+            Description: 'Worked on various projects related to Electronic Design Automation. Automated translation of integrated circuit verification rules between technologies. Created ad-hoc scripts for workflow automation. Later became QA intern.',
+            Logo: 'img/Synopsys.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://www.synopsys.com/',
+            Industry: 'Hardware Design, EDA (Electronic Design Automation)',
+            Technologies: 'Perl, Bash'
+        },
+        {
+            Key: 'Inta-65',
+            Company: 'Instigate Design',
+            Position: 'Internship',
+            Description: 'Optimization and refactoring of ad-hoc automation scripts.',
+            Logo: 'img/Instigate.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'http://ggg.instigatedesign.com/#1',
+            Industry: 'Computer Software',
+            Technologies: 'Bash, Makefile'
+        }
+      ];
+
+      const studies = [
+        {
+            Key: 'BuBu34_',
+            Company: 'American University of Armenia',
+            Position: 'Master\'s degree in Computer and Information Sciences',
+            Description: 'Graduation work: Modelling an Interactive Multi-Agent System',
+            Logo: 'img/AUA.png',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://aua.am'
+        },
+        {
+            Key: 'Abu123_',
+            Company: 'National Polytechnic University of Armenia',
+            Position: 'Bachelor\'s degree in Engineering (Informatics and Computer Science)',
+            Description: 'Graduation work: Analog and mixed signal circuits physical design automation tool.',
+            Logo: 'img/SEUA.jfif',
+            Location: 'Yerevan, Armenia',
+            Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+            Web: 'https://polytech.am/'
         }
       ];
 
@@ -204,8 +343,8 @@
             <div className="card-top-part" >
                 <div className="card-logo-holder"><img src={props.value.Logo} alt="Company logo" className="card-logo" /></div>
                 <div className="card-text">
-                    <h3 className="card-company" >{props.value.Company}</h3>
-                    <div>{props.value.Position}</div>
+                    <h3 className="card-position" >{props.value.Position}</h3>
+                    <div>{props.value.Company}</div>
                     <div className="card-icons">
                         <div><a href={props.value.Maps} ><i className="card-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
                         <div><a href={props.value.Web} ><i className="card-glyph fas fa-globe"></i>{props.value.Web}</a></div>
@@ -226,7 +365,7 @@
                             <span className="card-tag">Industry: </span><span className="card-tag-value" >{props.value.Industry}</span>
                         </div>
                         <div>
-                            <span className="card-tag">Technologies: </span><span className="card-tag-value" >{props.value.Technologies}</span>
+                            <span className="card-tag">Technologies: </span><span className="card-tag-value short" >{props.value.Technologies}</span>
                         </div>
                     </div>
                     <div className="card-bottom-part">
@@ -253,7 +392,23 @@
         }
       }
       
-      ReactDOM.render(<Experience />, document.getElementById('experience'))
+      class Education extends React.Component {
+        renderJob(study) {
+          return (<Card value={study}/>);
+        }
+
+        render() {
+            var result = [];
+            for (var i = 0; i < studies.length; i++) { 
+                var study = studies[i];
+                result.push(this.renderJob(study));
+            }
+            return (<div>{result}</div>);
+        }
+      }
+
+      ReactDOM.render(<Experience />, document.getElementById('experience'));
+      ReactDOM.render(<Education />, document.getElementById('education'));
     </script>
   </body>
 </html>
