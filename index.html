@@ -190,6 +190,45 @@
         .timeline {
             display: inline-block;
         }
+        .fullDescription {
+          padding: 20px;
+        }
+        .article-header {
+          margin-bottom: 30px;
+          border-bottom: 1px solid grey;
+        }
+        .article-logo {
+          height: 156px;
+          width: 156px;
+        }
+        .article-text {
+          display: inline-block;
+          position: absolute;
+          margin-left: 20px;
+        }
+        .article-logo-holder {
+          display: inline-block;
+          border-right: 1px solid grey;
+          padding-right: 20px;
+        }
+        .article-position {
+        }
+        .article-top-part {
+        }
+        .article-middle-part {
+        }
+        .article-icons {
+        }
+        .article-glyph {
+        }
+        .article-icons :first-child {
+        }
+        .article-tag {
+        }
+        .article-tag-value {
+        }
+        .article-tag, .article-tag-value {
+        }
 
         a:link, a:visited {
             color: #3e7db5 !important;
@@ -218,6 +257,7 @@
     <script type="text/babel">
       const experiences = [
         {
+            Markup: <div></div>,
             Key: 'BuBu34',
             Company: 'Praemium',
             Position: 'Software Developer',
@@ -392,40 +432,30 @@
 
       function Article(props) {
         return (
-          <div>
-            <div className="card-top-part" >
-                <div className="card-logo-holder"><img src={props.value.Logo} alt="Company logo" className="card-logo" /></div>
-                <div className="card-text">
-                    <h3 className="card-position" >{props.value.Position}</h3>
-                    <div>{props.value.Company}</div>
-                    <div className="card-icons">
-                        <div><a href={props.value.Maps} ><i className="card-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
-                        <div><a href={props.value.Web} ><i className="card-glyph fas fa-globe"></i>{props.value.Web}</a></div>
+          <div className="fullDescription">
+            <div className="article-header" >
+                <div className="article-logo-holder"><img src={props.value.Logo} alt="Company logo" className="article-logo" /></div>
+                <div className="article-text">
+                    <h3 className="article-position" >{props.value.Position}</h3>
+                    <div className="article-company">{props.value.Company}</div>
+                    <div className="article-icons">
+                        <div><a href={props.value.Maps} ><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
+                        <div><a href={props.value.Web} ><i className="article-glyph fas fa-globe"></i>{props.value.Web}</a></div>
                     </div>
                 </div>
             </div>
-            <div className="showHide">
-                <input type="checkbox" className="toggle" id={props.value.Key}/>
-                <label htmlFor={props.value.Key} className="chevron">
-                    <span className="expand">
-                        <span className="arrow-up"><i className="fas fa-chevron-up"></i></span>
-                        <span className="arrow-dn"><i className="fas fa-chevron-down"></i></span>
-                    </span>
-                </label>
-                <div className="colapsableContainer">
-                    <div className="card-middle-part">
-                        <div>
-                            <span className="card-tag">Industry: </span><span className="card-tag-value" >{props.value.Industry}</span>
-                        </div>
-                        <div>
-                            <span className="card-tag">Technologies: </span><span className="card-tag-value short" >{props.value.Technologies}</span>
-                        </div>
+              <div className="article-content">
+                <div>
+                    <div>
+                        <span className="article-tag">Industry: </span><span className="article-tag-value" >{props.value.Industry}</span>
                     </div>
-                    <div className="card-bottom-part">
-                        <div className="short-multi">{props.value.Description}</div>
+                    <div>
+                        <span className="article-tag">Technologies: </span><span className="article-tag-value short" >{props.value.Technologies}</span>
                     </div>
-                </div>
+                  </div>
+              <div>{props.value.Description}</div>
             </div>
+            <div className="article-footer"></div>
           </div>
         );
       }
