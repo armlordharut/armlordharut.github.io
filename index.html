@@ -195,7 +195,7 @@
         }
         .article-header {
           margin-bottom: 30px;
-          border-bottom: 1px solid grey;
+          border-bottom: 1px solid #0000001f;
         }
         .article-logo {
           height: 156px;
@@ -208,10 +208,11 @@
         }
         .article-logo-holder {
           display: inline-block;
-          border-right: 1px solid grey;
+          border-right: 1px solid #0000001f;
           padding-right: 20px;
         }
         .article-position {
+          margin-bottom: 5px;
         }
         .article-top-part {
         }
@@ -437,7 +438,7 @@
                 <div className="article-logo-holder"><img src={props.value.Logo} alt="Company logo" className="article-logo" /></div>
                 <div className="article-text">
                     <h3 className="article-position" >{props.value.Position}</h3>
-                    <div className="article-company">{props.value.Company}</div>
+                    <div className="article-company">{props.value.Company}<a href={props.value.Maps} ><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
                     <div className="article-icons">
                         <div><a href={props.value.Maps} ><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
                         <div><a href={props.value.Web} ><i className="article-glyph fas fa-globe"></i>{props.value.Web}</a></div>
