@@ -194,7 +194,7 @@
           padding: 20px;
         }
         .article-header {
-          margin-bottom: 30px;
+          margin-bottom: 10px;
           border-bottom: 1px solid #0000001f;
         }
         .article-logo {
@@ -209,14 +209,26 @@
         .article-logo-holder {
           display: inline-block;
           border-right: 1px solid #0000001f;
-          padding-right: 20px;
+          padding-right: 10px;
+          padding-bottom: 7px;
         }
         .article-position {
           margin-bottom: 5px;
         }
+        .article-company {
+          color: black !important;
+          border-bottom: 1px solid black;
+        }
+        .article-location {
+          color: black !important;
+          border-bottom: 1px solid black;
+        }
         .article-top-part {
         }
         .article-middle-part {
+          margin-bottom: 20px;
+          border-bottom: 1px solid #0000001f;
+          padding-bottom: 10px;
         }
         .article-icons {
         }
@@ -225,14 +237,20 @@
         .article-icons :first-child {
         }
         .article-tag {
+          font-weight: bold;
         }
         .article-tag-value {
+          font-style: italic;
         }
         .article-tag, .article-tag-value {
+          font-size: 14px;
         }
-
+        .article-separator {
+          margin: 10px;
+          border-right: 1px solid grey;
+        }
         a:link, a:visited {
-            color: #3e7db5 !important;
+            // color: #3e7db5 !important;
             text-decoration: none;
         }​
     </style>
@@ -267,7 +285,7 @@
             Location: 'Yerevan, Armenia',
             Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
             Web: 'https://www.praemium.com/intl/',
-            Industry: 'Finances (investment), Electronic Account Management',
+            Industry: 'Financial Services (investment), Electronic Account Management',
             Technologies: 'C#, ASP.NET, Dapper, Angular, Microsoft SQL Server'
         },
         {
@@ -291,7 +309,7 @@
             Location: 'Yerevan, Armenia',
             Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
             Web: 'https://kontur.ru',
-            Industry: 'Finances (accounting), Electronic Document Management',
+            Industry: 'Financial Services (accounting), Electronic Document Management',
             Technologies: 'C#, ASP.NET Core, EF Core, MVC, Microsoft SQL Server'
         },
         {
@@ -303,7 +321,7 @@
             Location: 'Yerevan, Armenia',
             Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
             Web: 'https://redkite.io/',
-            Industry: 'e-Commerce, behaiovarol Science',
+            Industry: 'e-Commerce, Behaiovarol Science',
             Technologies: 'C#, .NET Core, WCF, SOAP, MVC, Node.js (Express, MongoDb), JQuery/CSS, Python (TensorFlow, NLTK, Flask), Microsoft SQL Server'
         },
         {
@@ -327,7 +345,7 @@
             Location: 'Yerevan, Armenia',
             Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
             Web: 'https://www.synopsys.com/',
-            Industry: 'Hardware Design, EDA (Electronic Design Automation)',
+            Industry: 'EDA (Electronic Design Automation), Hardware Design',
             Technologies: 'Java, Python, Tcl, Perl'
         },
         {
@@ -339,7 +357,7 @@
             Location: 'Yerevan, Armenia',
             Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
             Web: 'https://www.synopsys.com/',
-            Industry: 'Hardware Design, EDA (Electronic Design Automation)',
+            Industry: 'EDA (Electronic Design Automation), Hardware Design',
             Technologies: 'Perl, Python, C#'
         },
         {
@@ -438,15 +456,14 @@
                 <div className="article-logo-holder"><img src={props.value.Logo} alt="Company logo" className="article-logo" /></div>
                 <div className="article-text">
                     <h3 className="article-position" >{props.value.Position}</h3>
-                    <div className="article-company">{props.value.Company}<a href={props.value.Maps} ><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
-                    <div className="article-icons">
-                        <div><a href={props.value.Maps} ><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
-                        <div><a href={props.value.Web} ><i className="article-glyph fas fa-globe"></i>{props.value.Web}</a></div>
-                    </div>
+                    <div>
+                      <a href={props.value.Web} className="article-company">{props.value.Company}</a>
+                      <span className="article-separator"></span>
+                      <a href={props.value.Maps} className="article-location">{props.value.Location}</a></div>
                 </div>
             </div>
               <div className="article-content">
-                <div>
+                <div className="article-middle-part">
                     <div>
                         <span className="article-tag">Industry: </span><span className="article-tag-value" >{props.value.Industry}</span>
                     </div>
