@@ -249,6 +249,9 @@
           margin: 10px;
           border-right: 1px solid grey;
         }
+        .article-duration {
+          margin-top: 0px;
+        }
         a:link, a:visited {
             // color: #3e7db5 !important;
             text-decoration: none;
@@ -489,24 +492,26 @@
         }
       ];
 
-      function formatDate(start, end) {
+      function generateDuration(start, end) {
         const reg = /^.+ \d+ (\w+) (\d+)/;
 
         var temp = reg.exec(start.toGMTString());
-        var matched = [temp[1] + temp[2]];
+        var matched = [temp[1] + ' ' + temp[2]];
         if (!end) {
           end = new Date();
           matched.push('Present');
         } else {
           temp = reg.exec(end.toGMTString());
-          matched.push(temp[1] + temp[2]);
+          matched.push(temp[1] + ' ' + temp[2]);
         }
 
         var deltaTime = Math.abs(start.getTime() - end.getTime());
         var deltaDays = Math.ceil(deltaTime / (1000 * 60 * 60 * 24));
         var days = deltaDays % 30;
-        var years = (deltaDays - days) / 30;
-        var result = matched[0] + '-' + matched[1] + ' ' + years + 'y ' + days + 'm';
+        var allMonths = (deltaDays - days) / 30;
+        var months = allMonths % 12;
+        var years = (allMonths - months) / 12;
+        var result = matched[0] + ' - ' + matched[1] + ' • ' + (years === 0 ? '' : years + 'yrs ') + (months === 0 ? '' : months + 'mos');
         return result;
       }
 
@@ -551,13 +556,14 @@
       }
 
       function Article(props) {
-        var duration = formatDate(props.value.Start, props.value.End);
+        var duration = generateDuration(props.value.Start, props.value.End);
         return (
           <div className="fullDescription">
             <div className="article-header" >
                 <div className="article-logo-holder"><img src={props.value.Logo} alt="Company logo" className="article-logo" /></div>
                 <div className="article-text">
                     <h3 className="article-position" >{props.value.Position}</h3>
+                    <h4 className="article-duration">{duration}</h4>
                     <div>
                       <a href={props.value.Web} className="article-company">{props.value.Company}</a>
                       <span className="article-separator"></span>
