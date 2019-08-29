@@ -178,8 +178,8 @@
         .extendedView {
           height: 800px;
           width: 800px;
-          position: relative;
-          top: -353px;
+          position: absolute;
+          // top: -353px;
           display: inline-block;
         }
         .timeline {
@@ -250,7 +250,11 @@
           margin-top: 0px;
         }
         .summary {
-          width: 1300px;
+          width: 1380px;
+          border-bottom: 1px solid #0000001f;
+          padding-bottom: 20px;
+          margin-bottom: 20px;
+          margin-top: 40px;
         }
         .profile-photo {
           display: block;
@@ -262,6 +266,42 @@
           height:200px;
           position:relative;
           left:calc(50% - 100px);
+          margin-bottom:10px;
+        }
+        .black-link {
+          color: black !important;
+          border-bottom: 1px solid black;
+        }
+        .about-glyph {
+          color: black !important;
+          font-size: 25px;
+          margin-right: 4px;
+        }
+        .about-middle {
+          left: calc(50% - 207px);
+          margin-bottom: 10px;
+        }
+        .about-summary {
+          display: inline-block;
+          width: 700px;
+          position: relative;
+        }
+        .about-contacts {
+          display: inline-block;
+          margin-right: 100px;
+          position: relative;
+          top: -70px;
+          margin-left: 85px;
+        }
+        .about-glyphs {
+          left: calc(50% - 50px);
+          position: relative;
+        }
+        .about-name {
+          display: inline-block;
+          margin-bottom: 10px;
+          position: relative;
+          left: calc(50% - 120px);
         }
         a:link, a:visited {
             text-decoration: none;
@@ -269,14 +309,6 @@
     </style>
   </head>
   <body>
-    <div class="navbar">
-        <ul>
-            <li>Contacts</li>
-            <li>Experience</li>
-            <li>Education</li>
-            <li>Blog</li>
-        </ul>
-    </div>
     <div class="header"></div>
     <div class="center">
       <div class="summary" id="about"></div>
@@ -291,6 +323,7 @@
     <div class="footer"></div>
     <script type="text/babel">
       const contacts = {
+        Name: 'Harutyun Harutyunyan',
         Phone: '+374 55 261 162',
         Email: 'harutyunyan.harutyun@gmail.com',
         Linkedin: 'https://www.linkedin.com/in/haruth',
@@ -625,15 +658,25 @@
         return (
           <div>
             <div>
-              <img src={props.value.Profile} alt="Profile photo" class="profile-photo" />
-              <div>
-                <a href={props.value.Github} ><i className="card-glyph fab fa-github"></i></a>
-                <a href={props.value.Twitter} ><i className="card-glyph fab fa-twitter"></i></a>
-                <a href={props.value.Medium} ><i className="card-glyph fab fa-medium"></i></a>
-                <a href={props.value.Linkedin} ><i className="card-glyph fab fa-linkedin-in"></i></a>
-              </div>
+              <img src={props.value.Profile} alt="Profile photo" className="profile-photo" />
             </div>
-            <div>{props.value.About}</div>
+            <div>
+              <div className="about-contacts" >
+                <h2 className="about-name" >{props.value.Name}</h2>
+                <div className="about-middle" >
+                  <a href={"mailto:" + props.value.Email} className="black-link" ><i className="article-glyph fas fa-envelope"></i>{props.value.Email}</a>
+                  <span className="article-separator"></span>
+                  <span><i className="article-glyph fas fa-phone"></i>{props.value.Phone}</span>
+                </div>
+                <div className="about-glyphs" >
+                  <a href={props.value.Github} ><i className="black about-glyph fab fa-github"></i></a>
+                  <a href={props.value.Twitter} ><i className="black about-glyph fab fa-twitter"></i></a>
+                  <a href={props.value.Medium} ><i className="black about-glyph fab fa-medium"></i></a>
+                  <a href={props.value.Linkedin} ><i className="black about-glyph fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+              <div className="about-summary" >{props.value.About}</div>
+            </div>
           </div>
         );
       }
