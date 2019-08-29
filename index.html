@@ -35,7 +35,6 @@
             box-shadow: 0px 0px 2px 0px #888888ad;
             width: 500px;
             height: auto;
-            // left: calc(50% - 250px);
             position: relative;
             margin-bottom: 20px;
             padding: 20px;
@@ -65,10 +64,7 @@
             margin-top: 0px;
             margin-bottom: 5px;
         }
-        .card-top-part {
-            // margin-bottom: 10px;
-            // padding-bottom: 20px;
-        }
+        .card-top-part { }
         .card-middle-part {
             margin-bottom: 20px;
             border-bottom: 1px solid #0000001f;
@@ -176,16 +172,15 @@
         .style-3::-webkit-scrollbar-thumb
         {
             background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
-            /* border-radius: 7px; */
             border-left: 8px solid white;
             border-right: 8px solid white;
         }
         .extendedView {
-            height: 800px;
-            width: 800px;
-            position: absolute;
-            top: 0px;
-            left: 580px;
+          height: 800px;
+          width: 800px;
+          position: absolute;
+          // top: -353px;
+          display: inline-block;
         }
         .timeline {
             display: inline-block;
@@ -233,6 +228,8 @@
         .article-icons {
         }
         .article-glyph {
+              font-size: 13px;
+    margin-right: 4px;
         }
         .article-icons :first-child {
         }
@@ -252,31 +249,102 @@
         .article-duration {
           margin-top: 0px;
         }
+        .summary {
+          width: 1380px;
+          border-bottom: 1px solid #0000001f;
+          padding-bottom: 20px;
+          margin-bottom: 20px;
+          margin-top: 40px;
+        }
+        .profile-photo {
+          display: block;
+          border-radius: 200px;
+          box-sizing: border-box;
+          border: 1px solid #0000001f;
+          padding: 3px;
+          width:200px;
+          height:200px;
+          position:relative;
+          left:calc(50% - 100px);
+          margin-bottom:10px;
+        }
+        .black-link {
+          color: black !important;
+          border-bottom: 1px solid black;
+        }
+        .about-glyph {
+          color: black !important;
+          font-size: 25px;
+          margin-right: 4px;
+        }
+        .about-middle {
+          left: calc(50% - 207px);
+          margin-bottom: 10px;
+        }
+        .about-summary {
+          display: inline-block;
+          width: 700px;
+          position: relative;
+        }
+        .about-contacts {
+          display: inline-block;
+          margin-right: 100px;
+          position: relative;
+          top: -70px;
+          margin-left: 85px;
+        }
+        .about-glyphs {
+          left: calc(50% - 50px);
+          position: relative;
+        }
+        .about-name {
+          display: inline-block;
+          margin-bottom: 10px;
+          position: relative;
+          left: calc(50% - 120px);
+        }
         a:link, a:visited {
-            // color: #3e7db5 !important;
             text-decoration: none;
         }​
     </style>
   </head>
   <body>
-    <div class="navbar">
-        <ul>
-            <li>Contacts</li>
-            <li>Experience</li>
-            <li>Education</li>
-            <li>Blog</li>
-        </ul>
-    </div>
     <div class="header"></div>
     <div class="center">
+      <div class="summary" id="about"></div>
+      <div>
         <div class="timeline">
             <div id="experience" class="sector style-3"></div>
             <div id="education" class="sector style-3 hidden"></div>
         </div>
         <div id="article" class="extendedView" ></div>
+      </div>
     </div>
     <div class="footer"></div>
     <script type="text/babel">
+      const contacts = {
+        Name: 'Harutyun Harutyunyan',
+        Phone: '+374 55 261 162',
+        Email: 'harutyunyan.harutyun@gmail.com',
+        Linkedin: 'https://www.linkedin.com/in/haruth',
+        Twitter: 'https://twitter.com/ArmlordHarut',
+        Medium: 'https://medium.com/@ArmlordHarut',
+        Github: 'https://github.com/armlordharut',
+        Profile: 'img/profile.jpg',
+        Location: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+        About: <div>
+          <p>Software developer with 8+ years of experience working in the fields of artificial intelligence, 
+          finance, ecommerce, education and electronics automation. Seasoned problem-solving professional 
+          specializing on software architecture and automation. Some of the achievements I am proud of are: 
+          bootstrapping natural language processing technology at a startup, developing secure and automated 
+          electronic document system, creating automated software quality assurance frameworks. I’ve seen and 
+          worked with various technologies and languages, using the best for the problem.</p>
+          <p>I am passionate about artificial intelligence, financial software, open source and web technologies. 
+          I teach in my alma mater and in my spare time work on my personal projects, which varies from developing 
+          personal financing app to continuing my research in AI.</p>
+        </div>
+      };
+
       const experiences = [
         {
           Markup: <div></div>,
@@ -565,9 +633,9 @@
                     <h3 className="article-position" >{props.value.Position}</h3>
                     <h4 className="article-duration">{duration}</h4>
                     <div>
-                      <a href={props.value.Web} className="article-company">{props.value.Company}</a>
+                      <a href={props.value.Web} className="article-company"><i className="article-glyph fa fa-globe"></i>{props.value.Company}</a>
                       <span className="article-separator"></span>
-                      <a href={props.value.Maps} className="article-location">{props.value.Location}</a></div>
+                      <a href={props.value.Maps} className="article-location"><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
                 </div>
             </div>
               <div className="article-content">
@@ -586,8 +654,34 @@
         );
       }
 
-      class Experience extends React.Component {
+      function About(props) {
+        return (
+          <div>
+            <div>
+              <img src={props.value.Profile} alt="Profile photo" className="profile-photo" />
+            </div>
+            <div>
+              <div className="about-contacts" >
+                <h2 className="about-name" >{props.value.Name}</h2>
+                <div className="about-middle" >
+                  <a href={"mailto:" + props.value.Email} className="black-link" ><i className="article-glyph fas fa-envelope"></i>{props.value.Email}</a>
+                  <span className="article-separator"></span>
+                  <span><i className="article-glyph fas fa-phone"></i>{props.value.Phone}</span>
+                </div>
+                <div className="about-glyphs" >
+                  <a href={props.value.Github} ><i className="black about-glyph fab fa-github"></i></a>
+                  <a href={props.value.Twitter} ><i className="black about-glyph fab fa-twitter"></i></a>
+                  <a href={props.value.Medium} ><i className="black about-glyph fab fa-medium"></i></a>
+                  <a href={props.value.Linkedin} ><i className="black about-glyph fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+              <div className="about-summary" >{props.value.About}</div>
+            </div>
+          </div>
+        );
+      }
 
+      class Experience extends React.Component {
         clickToExtend(job) {
             var result = <Article value={job} />;
             ReactDOM.render(result, document.getElementById('article'));
@@ -622,6 +716,7 @@
         }
       }
 
+      ReactDOM.render(<About value={contacts} />, document.getElementById('about'));
       ReactDOM.render(<Experience />, document.getElementById('experience'));
       ReactDOM.render(<Education />, document.getElementById('education'));
     </script>
