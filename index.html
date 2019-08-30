@@ -145,7 +145,7 @@
             padding: 0px 10px 10px 10px;
             margin-top: 10px;
             overflow: auto;
-            height: 800px;
+            max-height: 800px;
         }
         .hidden {
             display: none;
@@ -176,7 +176,7 @@
             border-right: 8px solid white;
         }
         .extendedView {
-          height: 800px;
+          max-height: 800px;
           width: 800px;
           position: absolute;
           // top: -353px;
@@ -317,7 +317,7 @@
           display: none;
         }
         .left-header {
-          margin-left: calc(50% - 60px);
+          margin-left: calc(50% - 101px);
           margin-right: -8px;
         }
         .invisible-radio:checked + label {border-bottom: 2px solid black;}
@@ -327,6 +327,9 @@
         .invisible-radio-education:checked ~ div #education { display: inline-block; }
         .timeline-holder {
           margin-top:20px;
+          border-bottom: 1px solid #0000001f;
+          padding-bottom: 20px;
+          margin-bottom: 40px;
         }
         a:link, a:visited {
             text-decoration: none;
