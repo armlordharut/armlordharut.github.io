@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Hello React!</title>
+    <title>undefined person</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -393,8 +393,11 @@
           Web: 'https://www.praemium.com/intl/',
           Industry: 'Financial Services (investment), Electronic Account Management',
           Technologies: 'C#, ASP.NET, Dapper, Angular, Microsoft SQL Server',
-          Start: new Date(Date.parse("2018-11-01T00:00:00+0000")),
-          End: undefined
+          Duration: {
+            Start: new Date(Date.parse("2018-11-01T00:00:00+0000")),
+            End: undefined,
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -419,8 +422,11 @@
           Web: 'https://aua.am',
           Industry: 'Education',
           Technologies: 'Assembly, Hardware design',
-          Start: new Date(Date.parse("2017-09-01T00:00:00+0000")),
-          End: undefined
+          Duration: {
+            Start: new Date(Date.parse("2017-09-01T00:00:00+0000")),
+            End: undefined,
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -445,8 +451,11 @@
           Web: 'https://kontur.ru',
           Industry: 'Financial Services (accounting), Electronic Document Management',
           Technologies: 'C#, ASP.NET Core, EF Core, MVC, Microsoft SQL Server',
-          Start: new Date(Date.parse("2018-06-01T00:00:00+0000")),
-          End: new Date(Date.parse("2018-11-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2018-06-01T00:00:00+0000")),
+            End: new Date(Date.parse("2018-11-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -467,8 +476,11 @@
           Web: 'https://redkite.io/',
           Industry: 'e-Commerce, Behaiovarol Science',
           Technologies: 'C#, .NET Core, WCF, SOAP, MVC, Node.js (Express, MongoDb), JQuery/CSS, Python (TensorFlow, NLTK, Flask), Microsoft SQL Server',
-          Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
-          End: new Date(Date.parse("2018-06-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
+            End: new Date(Date.parse("2018-06-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -485,8 +497,11 @@
           Web: 'https://aua.am',
           Industry: 'Education',
           Technologies: 'Algorithms, C++, Java, Design Patterns, Data Structures',
-          Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
-          End: new Date(Date.parse("2016-07-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
+            End: new Date(Date.parse("2016-07-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -508,8 +523,11 @@
           Web: 'https://www.synopsys.com/',
           Industry: 'EDA (Electronic Design Automation), Hardware Design',
           Technologies: 'Java, Python, Tcl, Perl',
-          Start: new Date(Date.parse("2013-12-01T00:00:00+0000")),
-          End: new Date(Date.parse("2016-01-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2013-12-01T00:00:00+0000")),
+            End: new Date(Date.parse("2016-01-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -529,8 +547,11 @@
           Web: 'https://www.synopsys.com/',
           Industry: 'EDA (Electronic Design Automation), Hardware Design',
           Technologies: 'Perl, Python, C#',
-          Start: new Date(Date.parse("2012-07-01T00:00:00+0000")),
-          End: new Date(Date.parse("2013-12-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2012-07-01T00:00:00+0000")),
+            End: new Date(Date.parse("2013-12-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -550,8 +571,11 @@
           Web: 'https://www.synopsys.com/',
           Industry: 'Hardware Design, EDA (Electronic Design Automation)',
           Technologies: 'Perl, Bash',
-          Start: new Date(Date.parse("2011-08-01T00:00:00+0000")),
-          End: new Date(Date.parse("2012-07-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2011-08-01T00:00:00+0000")),
+            End: new Date(Date.parse("2012-07-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>Optimization and refactoring of ad-hoc automation scripts.</div>,
@@ -565,8 +589,11 @@
           Web: 'http://ggg.instigatedesign.com/#1',
           Industry: 'Computer Software',
           Technologies: 'Bash, Makefile',
-          Start: new Date(Date.parse("2010-06-01T00:00:00+0000")),
-          End: new Date(Date.parse("2010-07-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2010-06-01T00:00:00+0000")),
+            End: new Date(Date.parse("2010-07-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         }
       ];
 
@@ -583,8 +610,11 @@
           Web: 'https://aua.am',
           Industry: 'Computer Software',
           Technologies: 'Bash, Makefile',
-          Start: new Date(Date.parse("2010-06-01T00:00:00+0000")),
-          End: new Date(Date.parse("2010-07-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2012-09-01T00:00:00+0000")),
+            End: new Date(Date.parse("2015-12-01T00:00:00+0000")),
+            IncludeDetails: false
+          }
         },
         {
           Markup: <div></div>,
@@ -598,8 +628,11 @@
           Web: 'https://polytech.am/',
           Industry: 'Computer Software',
           Technologies: 'Bash, Makefile',
-          Start: new Date(Date.parse("2010-06-01T00:00:00+0000")),
-          End: new Date(Date.parse("2010-07-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2008-09-01T00:00:00+0000")),
+            End: new Date(Date.parse("2012-07-01T00:00:00+0000")),
+            IncludeDetails: false
+          }
         }
       ];
 
@@ -608,17 +641,17 @@
         ReactDOM.unmountComponentAtNode(article);
       }
 
-      function generateDuration(start, end) {
+      function generateDuration(start, end, includeDetails) {
         const reg = /^.+ \d+ (\w+) (\d+)/;
 
         var temp = reg.exec(start.toGMTString());
-        var matched = [temp[1] + ' ' + temp[2]];
+        var matched = [(includeDetails ? temp[1] + ' ' : '') + temp[2]];
         if (!end) {
           end = new Date();
           matched.push('Present');
         } else {
           temp = reg.exec(end.toGMTString());
-          matched.push(temp[1] + ' ' + temp[2]);
+          matched.push((includeDetails ? temp[1] + ' ' : '') + temp[2]);
         }
 
         var deltaTime = Math.abs(start.getTime() - end.getTime());
@@ -627,7 +660,11 @@
         var allMonths = (deltaDays - days) / 30;
         var months = allMonths % 12;
         var years = (allMonths - months) / 12;
-        var result = matched[0] + ' - ' + matched[1] + ' • ' + (years === 0 ? '' : years + 'yrs ') + (months === 0 ? '' : months + 'mos');
+
+        var result = matched[0] + ' - ' + matched[1];
+        if (includeDetails) {
+          var result = matched[0] + ' - ' + matched[1] + ' • ' + (years === 0 ? '' : years + 'yrs ') + (months === 0 ? '' : months + 'mos');
+        }
         return result;
       }
 
@@ -672,7 +709,7 @@
       }
 
       function Article(props) {
-        var duration = generateDuration(props.value.Start, props.value.End);
+        var duration = generateDuration(props.value.Duration.Start, props.value.Duration.End, props.value.Duration.IncludeDetails);
         return (
           <div className="fullDescription">
             <div className="article-header" >
