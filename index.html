@@ -339,10 +339,10 @@
       <div class="summary" id="about"></div>
       <div>
         <input id="experience_radio" name="section-title" type=radio class="invisible-radio invisible-radio-experience" checked>
-        <label class="section-header left-header" for="experience_radio" >Experience</label>
+        <label class="section-header left-header" for="experience_radio" onclick="emptyExtendedView()">Experience</label>
         <span class="article-separator"></span>
         <input id="education_radio" name="section-title" type=radio class="invisible-radio invisible-radio-education">
-        <label class="section-header" for="education_radio" >Education</label>
+        <label class="section-header" for="education_radio" onclick="emptyExtendedView()" >Education</label>
         <div class="timeline-holder">
           <div class="timeline">
               <div id="experience" class="sector style-3"></div>
@@ -599,6 +599,11 @@
           End: new Date(Date.parse("2010-07-01T00:00:00+0000"))
         }
       ];
+
+      function emptyExtendedView() {
+        var article = document.getElementById('article');
+        ReactDOM.unmountComponentAtNode(article);
+      }
 
       function generateDuration(start, end) {
         const reg = /^.+ \d+ (\w+) (\d+)/;
