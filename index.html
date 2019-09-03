@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Hello React!</title>
+    <title>undefined person</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -145,7 +145,7 @@
             padding: 0px 10px 10px 10px;
             margin-top: 10px;
             overflow: auto;
-            height: 800px;
+            max-height: 800px;
         }
         .hidden {
             display: none;
@@ -176,7 +176,7 @@
             border-right: 8px solid white;
         }
         .extendedView {
-          height: 800px;
+          max-height: 800px;
           width: 800px;
           position: absolute;
           // top: -353px;
@@ -253,7 +253,7 @@
           width: 1380px;
           border-bottom: 1px solid #0000001f;
           padding-bottom: 20px;
-          margin-bottom: 20px;
+          margin-bottom: 40px;
           margin-top: 40px;
         }
         .profile-photo {
@@ -281,6 +281,11 @@
           left: calc(50% - 207px);
           margin-bottom: 10px;
         }
+        .about-middle-single {
+          left: calc(50% - 207px);
+          margin-bottom: 10px;
+          margin-left: 20px;
+        }
         .about-summary {
           display: inline-block;
           width: 700px;
@@ -303,6 +308,34 @@
           position: relative;
           left: calc(50% - 120px);
         }
+        #divider {
+          position: relative;
+          left: calc(50% - 80px);
+        }
+        .section-header {
+          display: inline-block;
+          font-weight: bold;
+          font-size: 19px;
+          padding-bottom: 2px;
+        }
+        .invisible-radio {
+          display: none;
+        }
+        .left-header {
+          margin-left: calc(50% - 101px);
+          margin-right: -8px;
+        }
+        .invisible-radio:checked + label {border-bottom: 2px solid black;}
+        .invisible-radio-experience:checked ~ div #experience { display: inline-block; }
+        .invisible-radio-education:checked ~ div #experience { display: none; }
+        .invisible-radio-experience:checked ~ div #education { display: none; }
+        .invisible-radio-education:checked ~ div #education { display: inline-block; }
+        .timeline-holder {
+          margin-top:20px;
+          border-bottom: 1px solid #0000001f;
+          padding-bottom: 20px;
+          margin-bottom: 40px;
+        }
         a:link, a:visited {
             text-decoration: none;
         }​
@@ -313,11 +346,18 @@
     <div class="center">
       <div class="summary" id="about"></div>
       <div>
-        <div class="timeline">
-            <div id="experience" class="sector style-3"></div>
-            <div id="education" class="sector style-3 hidden"></div>
+        <input id="experience_radio" name="section-title" type=radio class="invisible-radio invisible-radio-experience" checked>
+        <label class="section-header left-header" for="experience_radio" onclick="emptyExtendedView()">Experience</label>
+        <span class="article-separator"></span>
+        <input id="education_radio" name="section-title" type=radio class="invisible-radio invisible-radio-education">
+        <label class="section-header" for="education_radio" onclick="emptyExtendedView()" >Education</label>
+        <div class="timeline-holder">
+          <div class="timeline">
+              <div id="experience" class="sector style-3"></div>
+              <div id="education" class="sector style-3"></div>
+          </div>
+          <div id="article" class="extendedView" ></div>
         </div>
-        <div id="article" class="extendedView" ></div>
       </div>
     </div>
     <div class="footer"></div>
@@ -331,6 +371,7 @@
         Medium: 'https://medium.com/@ArmlordHarut',
         Github: 'https://github.com/armlordharut',
         Profile: 'img/profile.jpg',
+        Maps: 'Yerevan, Armenia',
         Location: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
         About: <div>
           <p>Software developer with 8+ years of experience working in the fields of artificial intelligence, 
@@ -356,10 +397,17 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://www.praemium.com/intl/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Financial Services (investment), Electronic Account Management',
           Technologies: 'C#, ASP.NET, Dapper, Angular, Microsoft SQL Server',
-          Start: new Date(Date.parse("2018-11-01T00:00:00+0000")),
-          End: undefined
+          Duration: {
+            Start: new Date(Date.parse("2018-11-01T00:00:00+0000")),
+            End: undefined,
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -382,10 +430,17 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://aua.am',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Education',
           Technologies: 'Assembly, Hardware design',
-          Start: new Date(Date.parse("2017-09-01T00:00:00+0000")),
-          End: undefined
+          Duration: {
+            Start: new Date(Date.parse("2017-09-01T00:00:00+0000")),
+            End: undefined,
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -408,10 +463,17 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://kontur.ru',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Financial Services (accounting), Electronic Document Management',
           Technologies: 'C#, ASP.NET Core, EF Core, MVC, Microsoft SQL Server',
-          Start: new Date(Date.parse("2018-06-01T00:00:00+0000")),
-          End: new Date(Date.parse("2018-11-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2018-06-01T00:00:00+0000")),
+            End: new Date(Date.parse("2018-11-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -430,10 +492,17 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://redkite.io/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'e-Commerce, Behaiovarol Science',
           Technologies: 'C#, .NET Core, WCF, SOAP, MVC, Node.js (Express, MongoDb), JQuery/CSS, Python (TensorFlow, NLTK, Flask), Microsoft SQL Server',
-          Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
-          End: new Date(Date.parse("2018-06-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
+            End: new Date(Date.parse("2018-06-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -448,10 +517,17 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://aua.am',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Education',
           Technologies: 'Algorithms, C++, Java, Design Patterns, Data Structures',
-          Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
-          End: new Date(Date.parse("2016-07-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
+            End: new Date(Date.parse("2016-07-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -471,10 +547,17 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://www.synopsys.com/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'EDA (Electronic Design Automation), Hardware Design',
           Technologies: 'Java, Python, Tcl, Perl',
-          Start: new Date(Date.parse("2013-12-01T00:00:00+0000")),
-          End: new Date(Date.parse("2016-01-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2013-12-01T00:00:00+0000")),
+            End: new Date(Date.parse("2016-01-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -492,10 +575,17 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://www.synopsys.com/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'EDA (Electronic Design Automation), Hardware Design',
           Technologies: 'Perl, Python, C#',
-          Start: new Date(Date.parse("2012-07-01T00:00:00+0000")),
-          End: new Date(Date.parse("2013-12-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2012-07-01T00:00:00+0000")),
+            End: new Date(Date.parse("2013-12-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>
@@ -513,10 +603,17 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://www.synopsys.com/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Hardware Design, EDA (Electronic Design Automation)',
           Technologies: 'Perl, Bash',
-          Start: new Date(Date.parse("2011-08-01T00:00:00+0000")),
-          End: new Date(Date.parse("2012-07-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2011-08-01T00:00:00+0000")),
+            End: new Date(Date.parse("2012-07-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         },
         {
           Markup: <div>Optimization and refactoring of ad-hoc automation scripts.</div>,
@@ -528,16 +625,23 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'http://ggg.instigatedesign.com/#1',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Computer Software',
           Technologies: 'Bash, Makefile',
-          Start: new Date(Date.parse("2010-06-01T00:00:00+0000")),
-          End: new Date(Date.parse("2010-07-01T00:00:00+0000"))
+          Duration: {
+            Start: new Date(Date.parse("2010-06-01T00:00:00+0000")),
+            End: new Date(Date.parse("2010-07-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
         }
       ];
 
       const studies = [
         {
-          Markup: <div></div>,
+          Markup: <div>Graduation work: Modelling an Interactive Multi-Agent System.</div>,
           Key: 'BuBu34_',
           Company: 'American University of Armenia',
           Position: 'Master\'s degree in Computer and Information Sciences',
@@ -545,10 +649,21 @@
           Logo: 'img/AUA.png',
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
-          Web: 'https://aua.am'
+          Web: 'https://aua.am',
+          Labels: {
+            First: 'Major',
+            Second: 'Courses'
+          },
+          Industry: 'Computer Science, Entrepreneurship',
+          Technologies: 'Advanced Algorithms, Neural Networks, Discrete Math',
+          Duration: {
+            Start: new Date(Date.parse("2012-09-01T00:00:00+0000")),
+            End: new Date(Date.parse("2015-12-01T00:00:00+0000")),
+            IncludeDetails: false
+          }
         },
         {
-          Markup: <div></div>,
+          Markup: <div>Graduation work: Analog and mixed signal circuits physical design automation tool.</div>,
           Key: 'Abu123_',
           Company: 'National Polytechnic University of Armenia',
           Position: 'Bachelor\'s degree in Engineering (Informatics and Computer Science)',
@@ -556,21 +671,37 @@
           Logo: 'img/SEUA.jfif',
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
-          Web: 'https://polytech.am/'
+          Web: 'https://polytech.am/',
+          Labels: {
+            First: 'Major',
+            Second: 'Courses'
+          },
+          Industry: 'Computer Science, Automated Hardware Design',
+          Technologies: 'Advanced Programming, Analog and Digital Hardware Design',
+          Duration: {
+            Start: new Date(Date.parse("2008-09-01T00:00:00+0000")),
+            End: new Date(Date.parse("2012-07-01T00:00:00+0000")),
+            IncludeDetails: false
+          }
         }
       ];
 
-      function generateDuration(start, end) {
+      function emptyExtendedView() {
+        var article = document.getElementById('article');
+        ReactDOM.unmountComponentAtNode(article);
+      }
+
+      function generateDuration(start, end, includeDetails) {
         const reg = /^.+ \d+ (\w+) (\d+)/;
 
         var temp = reg.exec(start.toGMTString());
-        var matched = [temp[1] + ' ' + temp[2]];
+        var matched = [(includeDetails ? temp[1] + ' ' : '') + temp[2]];
         if (!end) {
           end = new Date();
           matched.push('Present');
         } else {
           temp = reg.exec(end.toGMTString());
-          matched.push(temp[1] + ' ' + temp[2]);
+          matched.push((includeDetails ? temp[1] + ' ' : '') + temp[2]);
         }
 
         var deltaTime = Math.abs(start.getTime() - end.getTime());
@@ -579,7 +710,11 @@
         var allMonths = (deltaDays - days) / 30;
         var months = allMonths % 12;
         var years = (allMonths - months) / 12;
-        var result = matched[0] + ' - ' + matched[1] + ' • ' + (years === 0 ? '' : years + 'yrs ') + (months === 0 ? '' : months + 'mos');
+
+        var result = matched[0] + ' - ' + matched[1];
+        if (includeDetails) {
+          var result = matched[0] + ' - ' + matched[1] + ' • ' + (years === 0 ? '' : years + 'yrs ') + (months === 0 ? '' : months + 'mos');
+        }
         return result;
       }
 
@@ -624,7 +759,7 @@
       }
 
       function Article(props) {
-        var duration = generateDuration(props.value.Start, props.value.End);
+        var duration = generateDuration(props.value.Duration.Start, props.value.Duration.End, props.value.Duration.IncludeDetails);
         return (
           <div className="fullDescription">
             <div className="article-header" >
@@ -641,10 +776,10 @@
               <div className="article-content">
                 <div className="article-middle-part">
                     <div>
-                        <span className="article-tag">Industry: </span><span className="article-tag-value" >{props.value.Industry}</span>
+                        <span className="article-tag">{props.value.Labels.First}: </span><span className="article-tag-value" >{props.value.Industry}</span>
                     </div>
                     <div>
-                        <span className="article-tag">Technologies: </span><span className="article-tag-value short" >{props.value.Technologies}</span>
+                        <span className="article-tag">{props.value.Labels.Second}: </span><span className="article-tag-value short" >{props.value.Technologies}</span>
                     </div>
                   </div>
               <div>{props.value.Markup}</div>
@@ -663,8 +798,11 @@
             <div>
               <div className="about-contacts" >
                 <h2 className="about-name" >{props.value.Name}</h2>
-                <div className="about-middle" >
+                <div className="about-middle-single" >
                   <a href={"mailto:" + props.value.Email} className="black-link" ><i className="article-glyph fas fa-envelope"></i>{props.value.Email}</a>
+                </div>
+                <div className="about-middle" >
+                  <a href={props.value.Location} className="black-link" ><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Maps}</a>
                   <span className="article-separator"></span>
                   <span><i className="article-glyph fas fa-phone"></i>{props.value.Phone}</span>
                 </div>
@@ -702,8 +840,13 @@
       }
       
       class Education extends React.Component {
+        clickToExtend(study) {
+            var result = <Article value={study} />;
+            ReactDOM.render(result, document.getElementById('article'));
+        }
+
         renderJob(study) {
-          return (<Card value={study}/>);
+          return (<Card value={study} onClick={() => this.clickToExtend(study)} />);
         }
 
         render() {
