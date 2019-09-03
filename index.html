@@ -281,6 +281,11 @@
           left: calc(50% - 207px);
           margin-bottom: 10px;
         }
+        .about-middle-single {
+          left: calc(50% - 207px);
+          margin-bottom: 10px;
+          margin-left: 20px;
+        }
         .about-summary {
           display: inline-block;
           width: 700px;
@@ -366,6 +371,7 @@
         Medium: 'https://medium.com/@ArmlordHarut',
         Github: 'https://github.com/armlordharut',
         Profile: 'img/profile.jpg',
+        Maps: 'Yerevan, Armenia',
         Location: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
         About: <div>
           <p>Software developer with 8+ years of experience working in the fields of artificial intelligence, 
@@ -391,6 +397,10 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://www.praemium.com/intl/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Financial Services (investment), Electronic Account Management',
           Technologies: 'C#, ASP.NET, Dapper, Angular, Microsoft SQL Server',
           Duration: {
@@ -420,6 +430,10 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://aua.am',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Education',
           Technologies: 'Assembly, Hardware design',
           Duration: {
@@ -449,6 +463,10 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://kontur.ru',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Financial Services (accounting), Electronic Document Management',
           Technologies: 'C#, ASP.NET Core, EF Core, MVC, Microsoft SQL Server',
           Duration: {
@@ -474,6 +492,10 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://redkite.io/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'e-Commerce, Behaiovarol Science',
           Technologies: 'C#, .NET Core, WCF, SOAP, MVC, Node.js (Express, MongoDb), JQuery/CSS, Python (TensorFlow, NLTK, Flask), Microsoft SQL Server',
           Duration: {
@@ -495,6 +517,10 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://aua.am',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Education',
           Technologies: 'Algorithms, C++, Java, Design Patterns, Data Structures',
           Duration: {
@@ -521,6 +547,10 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://www.synopsys.com/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'EDA (Electronic Design Automation), Hardware Design',
           Technologies: 'Java, Python, Tcl, Perl',
           Duration: {
@@ -545,6 +575,10 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://www.synopsys.com/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'EDA (Electronic Design Automation), Hardware Design',
           Technologies: 'Perl, Python, C#',
           Duration: {
@@ -569,6 +603,10 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://www.synopsys.com/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Hardware Design, EDA (Electronic Design Automation)',
           Technologies: 'Perl, Bash',
           Duration: {
@@ -587,6 +625,10 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'http://ggg.instigatedesign.com/#1',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
           Industry: 'Computer Software',
           Technologies: 'Bash, Makefile',
           Duration: {
@@ -599,7 +641,7 @@
 
       const studies = [
         {
-          Markup: <div></div>,
+          Markup: <div>Graduation work: Modelling an Interactive Multi-Agent System.</div>,
           Key: 'BuBu34_',
           Company: 'American University of Armenia',
           Position: 'Master\'s degree in Computer and Information Sciences',
@@ -608,8 +650,12 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://aua.am',
-          Industry: 'Computer Software',
-          Technologies: 'Bash, Makefile',
+          Labels: {
+            First: 'Major',
+            Second: 'Courses'
+          },
+          Industry: 'Computer Science, Entrepreneurship',
+          Technologies: 'Advanced Algorithms, Neural Networks, Discrete Math',
           Duration: {
             Start: new Date(Date.parse("2012-09-01T00:00:00+0000")),
             End: new Date(Date.parse("2015-12-01T00:00:00+0000")),
@@ -617,7 +663,7 @@
           }
         },
         {
-          Markup: <div></div>,
+          Markup: <div>Graduation work: Analog and mixed signal circuits physical design automation tool.</div>,
           Key: 'Abu123_',
           Company: 'National Polytechnic University of Armenia',
           Position: 'Bachelor\'s degree in Engineering (Informatics and Computer Science)',
@@ -626,8 +672,12 @@
           Location: 'Yerevan, Armenia',
           Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
           Web: 'https://polytech.am/',
-          Industry: 'Computer Software',
-          Technologies: 'Bash, Makefile',
+          Labels: {
+            First: 'Major',
+            Second: 'Courses'
+          },
+          Industry: 'Computer Science, Automated Hardware Design',
+          Technologies: 'Advanced Programming, Analog and Digital Hardware Design',
           Duration: {
             Start: new Date(Date.parse("2008-09-01T00:00:00+0000")),
             End: new Date(Date.parse("2012-07-01T00:00:00+0000")),
@@ -726,10 +776,10 @@
               <div className="article-content">
                 <div className="article-middle-part">
                     <div>
-                        <span className="article-tag">Industry: </span><span className="article-tag-value" >{props.value.Industry}</span>
+                        <span className="article-tag">{props.value.Labels.First}: </span><span className="article-tag-value" >{props.value.Industry}</span>
                     </div>
                     <div>
-                        <span className="article-tag">Technologies: </span><span className="article-tag-value short" >{props.value.Technologies}</span>
+                        <span className="article-tag">{props.value.Labels.Second}: </span><span className="article-tag-value short" >{props.value.Technologies}</span>
                     </div>
                   </div>
               <div>{props.value.Markup}</div>
@@ -748,8 +798,11 @@
             <div>
               <div className="about-contacts" >
                 <h2 className="about-name" >{props.value.Name}</h2>
-                <div className="about-middle" >
+                <div className="about-middle-single" >
                   <a href={"mailto:" + props.value.Email} className="black-link" ><i className="article-glyph fas fa-envelope"></i>{props.value.Email}</a>
+                </div>
+                <div className="about-middle" >
+                  <a href={props.value.Location} className="black-link" ><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Maps}</a>
                   <span className="article-separator"></span>
                   <span><i className="article-glyph fas fa-phone"></i>{props.value.Phone}</span>
                 </div>
