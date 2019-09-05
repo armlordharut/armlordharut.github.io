@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>undefined person</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -12,6 +12,12 @@
     <style>
         body {
             font-family: 'Ubuntu Mono', monospace;
+        }
+        html,body {
+          text-size-adjust: none;
+          -webkit-text-size-adjust: none;
+          -moz-text-size-adjust: none;
+          -ms-text-size-adjust: none;
         }
         .navbar {
             height: 40px;
@@ -301,6 +307,7 @@
         .about-glyphs {
           left: calc(50% - 50px);
           position: relative;
+          width: 112px;
         }
         .about-name {
           display: inline-block;
@@ -335,6 +342,73 @@
           border-bottom: 1px solid #0000001f;
           padding-bottom: 20px;
           margin-bottom: 40px;
+        }
+        @media only screen and (max-device-width: 425px) and (min-device-width: 320px) {
+          .center {
+            width: 100%;
+            left: 0px;
+          }
+          .summary {
+            width: auto;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+          }
+          .about-contacts {
+            position: initial;
+            margin-left: 0px;
+            display: block;
+            margin-right: 0px;
+          }
+          .about-middle-single {
+            width: auto;
+            left: calc(50% - 148px);
+            display: inline-block;
+            position: relative;
+          }
+          .about-middle {
+            left: calc(50% - 150px);
+            display: inline-block;
+            position: relative;
+          }
+          .about-summary {
+            width: auto;
+          }
+          .sector {
+            width: 98%;
+            padding: 0px;
+            max-height: 500px;
+          }
+          .card {
+            width: 98%;
+            padding: 0px;
+          }
+          .card:hover {
+            box-shadow: 0px 0px 2px 0px #888888ad;
+          }
+          .card-logo-holder {
+            display: none;
+          }
+          .card-text {
+            width: initial;
+            position: relative;
+          }
+          .card-holder {
+            margin-right: 0px;
+          }
+          .card-icons :first-child {
+            margin-left: 0px;
+          }
+          .short {
+            white-space: initial;
+            width: 100%;
+          }
+          .extendedView {
+            display: none;
+          }
+          .article-duration {
+            font-size: 15px;
+            margin-bottom: 5px;
+          }
         }
         a:link, a:visited {
             text-decoration: none;
@@ -719,16 +793,17 @@
       }
 
       function Card(props) {
+        var duration = generateDuration(props.value.Duration.Start, props.value.Duration.End, props.value.Duration.IncludeDetails);
         return (
           <div className="card" onClick={props.onClick}>
             <div className="card-top-part" >
                 <div className="card-logo-holder"><img src={props.value.Logo} alt="Company logo" className="card-logo" /></div>
                 <div className="card-text">
                     <h3 className="card-position" >{props.value.Position}</h3>
-                    <div>{props.value.Company}</div>
+                    <h4 className="article-duration">{duration}</h4>
                     <div className="card-icons">
-                        <div><a href={props.value.Maps} ><i className="card-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
-                        <div><a href={props.value.Web} ><i className="card-glyph fas fa-globe"></i>{props.value.Web}</a></div>
+                        <div><a href={props.value.Web} className="article-company">{props.value.Company}</a></div>
+                        <div><a href={props.value.Maps} className="article-location">{props.value.Location}</a></div>
                     </div>
                 </div>
             </div>
@@ -770,7 +845,8 @@
                     <div>
                       <a href={props.value.Web} className="article-company"><i className="article-glyph fa fa-globe"></i>{props.value.Company}</a>
                       <span className="article-separator"></span>
-                      <a href={props.value.Maps} className="article-location"><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a></div>
+                      <a href={props.value.Maps} className="article-location"><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a>
+                    </div>
                 </div>
             </div>
               <div className="article-content">
@@ -835,7 +911,7 @@
                 var job = experiences[i];
                 result.push(this.renderJob(job));
             }
-            return (<div>{result}</div>);
+            return (<div className="card-holder">{result}</div>);
         }
       }
       
