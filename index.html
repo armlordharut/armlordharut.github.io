@@ -343,7 +343,10 @@
           padding-bottom: 20px;
           margin-bottom: 40px;
         }
-        @media only screen and (max-device-width: 425px) and (min-device-width: 320px) {
+        .card-small-text-separator {
+          display: none;
+        }
+        @media only screen and (max-device-width: 1368px) and (min-device-width: 320px) {
           .center {
             width: 100%;
             left: 0px;
@@ -360,9 +363,9 @@
             margin-right: 0px;
           }
           .about-middle-single {
-            width: auto;
+            width: 257px;
             left: calc(50% - 148px);
-            display: inline-block;
+            display: block;
             position: relative;
           }
           .about-middle {
@@ -374,9 +377,10 @@
             width: auto;
           }
           .sector {
-            width: 98%;
+            width: 100%;
             padding: 0px;
-            max-height: 500px;
+            min-height: 500px;
+            max-height: fit-content;
           }
           .card {
             width: 98%;
@@ -429,6 +433,28 @@
           .short-multi {
             height: auto;
             -webkit-line-clamp: initial;
+          }
+        }
+        @media only screen and (max-device-width: 1368px) and (min-device-width: 525px) {
+          .card-logo-holder {
+            display: inline-block;
+            padding: 10px;
+          }
+          .card-logo {
+            width: 80px;
+            height: 80px;
+          }
+          .card-text {
+            position: absolute;
+          }
+          .card-small-text {
+            display: inline-block;
+          }
+          .card-small-text-separator {
+            display: initial;
+          }
+          .card-top-part {
+            margin-bottom: 1px;
           }
         }
         a:link, a:visited {
@@ -823,8 +849,9 @@
                     <h3 className="card-position" >{props.value.Position}</h3>
                     <h4 className="article-duration">{duration}</h4>
                     <div className="card-icons">
-                        <div><a href={props.value.Web} className="article-company">{props.value.Company}</a></div>
-                        <div><a href={props.value.Maps} className="article-location">{props.value.Location}</a></div>
+                        <div className="card-small-text" ><a href={props.value.Web} className="article-company">{props.value.Company}</a></div>
+                        <span className="card-small-text-separator article-separator"></span>
+                        <div className="card-small-text" ><a href={props.value.Maps} className="article-location">{props.value.Location}</a></div>
                     </div>
                 </div>
             </div>
