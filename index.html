@@ -5,484 +5,425 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>undefined person</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <style>
-        body {
-            font-family: 'Ubuntu Mono', monospace;
-        }
-        html,body {
-          text-size-adjust: none;
-          -webkit-text-size-adjust: none;
-          -moz-text-size-adjust: none;
-          -ms-text-size-adjust: none;
-        }
-        .navbar {
-            height: 40px;
-            width: 100%;
-            background-color: lightblue;
-        }
-        .navbar ul {
-            float: right;
-            margin: 0px;
-        }
-        .navbar ul li {
-            display: inline-block;
-            padding: 3px;
-            margin: 10px;
-            border-bottom: 1px solid black;
-        }
-        .card {
-            padding: 5px;
-            margin: 5px;
-            border-radius: 4px;
-            box-shadow: 0px 0px 2px 0px #888888ad;
-            width: 500px;
-            height: auto;
-            position: relative;
-            margin-bottom: 20px;
-            padding: 20px;
-        }
-        .card:hover {
-            box-shadow: 0px 0px 15px 0px #8888884f;
-        }
-        .card-logo {
-            display: block;
-            border-radius: 200px;
-            box-sizing: border-box;
-            border: 1px solid #0000001f;
-            padding: 3px;
-            width:104px;
-            height:104px;
-        }
-        .card-text {
-            display: inline-block;
-            position: absolute;
-            width: 370px;
-            padding: 15px;
-        }
-        .card-logo-holder {
-            display: inline-block;
-        }
-        .card-position {
-            margin-top: 0px;
-            margin-bottom: 5px;
-        }
-        .card-top-part { }
-        .card-middle-part {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #0000001f;
-            border-top: 1px solid #0000001f;
-            padding-bottom: 10px;
-            padding-top: 10px;
-        }
-        .card-icons {
-            margin-top: 5px;
-            color: #3e7db5;
-            font-size: 13px;
-        }
-        .card-glyph {
-            margin-right: 4px;
-        }
-        .card-icons :first-child {
-            margin-bottom: 2px;
-            margin-left: 2px;
-        }
-        .short {
-            display: inline-block;
-            width: 400px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            position: relative;
-            top: 2px;
-        }
-        .short-multi {
-            display: block;
-            display: -webkit-box;
-            height: 48px;
-            margin: 0 auto;
-            font-size: 16px;
-            line-height: 16px;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .card-tag {
-            font-weight: bold;
-        }
-        .card-tag-value {
-            font-style: italic;
-        }
-        .card-tag, .card-tag-value {
-            font-size: 14px;
-        }
-
-        .chevron {
-            position: relative;
-            left: 242px;
-        }
-        .expand {
-            color: #b3b3b3;
-        }
-        .colapsableContainer {
-            height: 0;
-            overflow: hidden;
-            transition: 0.5s linear;
-        }
-        .toggle {
-            display: none;
-        }
-        .toggle:checked ~ .colapsableContainer {
-            height: 122px;
-            padding-top: 10px;
-        }
-        .toggle:checked ~ .card-top-part-border { border-bottom: 1px solid #0000001f; }
-        label .arrow-dn { display: inline-block; }
-        label .arrow-up { display: none; }
-        .toggle:checked ~ label .arrow-dn { display: none; }
-        .toggle:checked ~ label .arrow-up { display: inline-block; }
-        .sector {
-            width: 560px;
-            display: inline-block;
-            padding: 0px 10px 10px 10px;
-            margin-top: 10px;
-            overflow: auto;
-            max-height: 800px;
-        }
-        .hidden {
-            display: none;
-        }
-        .center {
-            left: calc(50% - 690px);
-            position: relative;
-            display: inline-block;
-        }
-
-        .style-3::-webkit-scrollbar-track
-        {
-            background-color: #e0e0e0;
-            border-left: 9px solid white;
-            border-right: 9px solid white;
-        }
-
-        .style-3::-webkit-scrollbar
-        {
-            width: 20px;
-            background-color: #000000;
-        }
-
-        .style-3::-webkit-scrollbar-thumb
-        {
-            background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
-            border-left: 8px solid white;
-            border-right: 8px solid white;
-        }
-        .extendedView {
-          max-height: 800px;
-          width: 800px;
-          position: absolute;
-          // top: -353px;
-          display: inline-block;
-        }
-        .timeline {
-            display: inline-block;
-        }
-        .fullDescription {
-          padding: 20px;
-        }
-        .article-header {
-          margin-bottom: 10px;
-          border-bottom: 1px solid #0000001f;
-        }
-        .article-logo {
-          height: 156px;
-          width: 156px;
-        }
-        .article-text {
-          display: inline-block;
-          position: absolute;
-          margin-left: 20px;
-        }
-        .article-logo-holder {
-          display: inline-block;
-          border-right: 1px solid #0000001f;
-          padding-right: 10px;
-          padding-bottom: 7px;
-        }
-        .article-position {
-          margin-bottom: 5px;
-        }
-        .article-company {
-          color: black !important;
-          border-bottom: 1px solid black;
-        }
-        .article-location {
-          color: black !important;
-          border-bottom: 1px solid black;
-        }
-        .article-top-part {
-        }
-        .article-middle-part {
-          margin-bottom: 20px;
-          border-bottom: 1px solid #0000001f;
-          padding-bottom: 10px;
-        }
-        .article-icons {
-        }
-        .article-glyph {
-          font-size: 13px;
-          margin-right: 4px;
-        }
-        .article-icons :first-child {
-        }
-        .article-tag {
-          font-weight: bold;
-        }
-        .article-tag-value {
-          font-style: italic;
-        }
-        .article-tag, .article-tag-value {
-          font-size: 14px;
-        }
-        .article-separator {
-          margin: 10px;
-          border-right: 1px solid grey;
-        }
-        .article-duration {
-          margin-top: 0px;
-        }
-        .summary {
-          width: 1380px;
-          border-bottom: 1px solid #0000001f;
-          padding-bottom: 20px;
-          margin-bottom: 40px;
-          margin-top: 40px;
-        }
-        .profile-photo {
-          display: block;
-          border-radius: 200px;
-          box-sizing: border-box;
-          border: 1px solid #0000001f;
-          padding: 3px;
-          width:200px;
-          height:200px;
-          position:relative;
-          left:calc(50% - 100px);
-          margin-bottom:10px;
-        }
-        .black-link {
-          color: black !important;
-          border-bottom: 1px solid black;
-        }
-        .about-glyph {
-          color: black !important;
-          font-size: 25px;
-          margin-right: 4px;
-        }
-        .about-middle {
-          left: calc(50% - 207px);
-          margin-bottom: 10px;
-        }
-        .about-middle-single {
-          left: calc(50% - 207px);
-          margin-bottom: 10px;
-          margin-left: 20px;
-        }
-        .about-summary {
-          display: inline-block;
-          width: 700px;
-          position: relative;
-        }
-        .about-contacts {
-          display: inline-block;
-          margin-right: 100px;
-          position: relative;
-          top: -70px;
-          margin-left: 85px;
-        }
-        .about-glyphs {
-          left: calc(50% - 50px);
-          position: relative;
-          width: 112px;
-        }
-        .about-name {
-          display: inline-block;
-          margin-bottom: 10px;
-          position: relative;
-          left: calc(50% - 120px);
-        }
-        #divider {
-          position: relative;
-          left: calc(50% - 80px);
-        }
-        .section-header {
-          display: inline-block;
-          font-weight: bold;
-          font-size: 19px;
-          padding-bottom: 2px;
-        }
-        .invisible-radio {
-          display: none;
-        }
-        .left-header {
-          margin-left: calc(50% - 101px);
-          margin-right: -8px;
-        }
-        .invisible-radio:checked + label {border-bottom: 2px solid black;}
-        .invisible-radio-experience:checked ~ div #experience { display: inline-block; }
-        .invisible-radio-education:checked ~ div #experience { display: none; }
-        .invisible-radio-experience:checked ~ div #education { display: none; }
-        .invisible-radio-education:checked ~ div #education { display: inline-block; }
-        .timeline-holder {
-          margin-top:20px;
-          border-bottom: 1px solid #0000001f;
-          padding-bottom: 20px;
-          margin-bottom: 40px;
-        }
-        .card-small-text-separator {
-          display: none;
-        }
-        @media only screen and (max-device-width: 1368px) and (min-device-width: 320px) {
-          .center {
-            width: 100%;
-            left: 0px;
-          }
-          .summary {
-            width: auto;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-          }
-          .about-contacts {
-            position: initial;
-            margin-left: 0px;
-            display: block;
-            margin-right: 0px;
-          }
-          .about-middle-single {
-            width: 257px;
-            left: calc(50% - 148px);
-            display: block;
-            position: relative;
-          }
-          .about-middle {
-            left: calc(50% - 150px);
-            display: inline-block;
-            position: relative;
-          }
-          .about-summary {
-            width: auto;
-          }
-          .sector {
-            width: 100%;
-            padding: 0px;
-            min-height: 500px;
-            max-height: fit-content;
-          }
-          .card {
-            width: 98%;
-            padding: 0px;
-          }
-          .card:hover {
-            box-shadow: 0px 0px 2px 0px #888888ad;
-          }
-          .card-logo-holder {
-            display: none;
-          }
-          .card-text {
-            width: initial;
-            position: relative;
-            padding-bottom: 5px;
-          }
-          .card-holder {
-            margin-right: 0px;
-          }
-          .card-icons :first-child {
-            margin-left: 0px;
-          }
-          .short {
-            white-space: initial;
-            width: 100%;
-          }
-          .extendedView {
-            display: none;
-          }
-          .article-duration {
-            font-size: 15px;
-            margin-bottom: 5px;
-          }
-          .showHide {
-            padding-bottom: 5px;
-          }
-          .chevron {
-            left: 50%;
-          }
-          .colapsableContainer {
-            transition: unset;
-          }
-          .toggle:checked ~ .colapsableContainer {
-            height: auto;
-            padding: 10px;
-          }
-          .card-middle-part {
-            margin-bottom: 10px;
-          }
-          .short-multi {
-            height: auto;
-            -webkit-line-clamp: initial;
-          }
-        }
-        @media only screen and (max-device-width: 1368px) and (min-device-width: 525px) {
-          .card-logo-holder {
-            display: inline-block;
-            padding: 10px;
-          }
-          .card-logo {
-            width: 80px;
-            height: 80px;
-          }
-          .card-text {
-            position: absolute;
-          }
-          .card-small-text {
-            display: inline-block;
-          }
-          .card-small-text-separator {
-            display: initial;
-          }
-          .card-top-part {
-            margin-bottom: 1px;
-          }
-        }
-        a:link, a:visited {
-            text-decoration: none;
-        }​
-    </style>
+    <script src="jquery-3.5.1.js"></script>
   </head>
+  <style>
+/***************************************/
+/*****            Grid             *****/
+/***************************************/
+  body {
+    font-family: 'Ubuntu Mono', monospace;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      ". contacts ."
+      ". controls ."
+      ". info .";
+  }
+  #contacts {
+    grid-area: contacts;
+    display: grid;
+    grid-template-columns: 3fr 2fr 3fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      ". profile ."
+      "social summary summary";
+  }
+  #controls {
+    grid-area: controls;
+  }
+  #info {
+    grid-area: info;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: auto;
+    grid-template-areas: "cards article";
+  }
+  #cards {
+    grid-area: cards;
+  }
+  #article {
+    grid-area: article;
+  }
+  #profile {
+    grid-area: profile;
+  }
+  #social {
+    grid-area: social;
+  }
+  #summary {
+    grid-area: summary;
+  }
+/***************************************/
+
+/***************************************/
+/*****           About             *****/
+/***************************************/
+  .profile-photo {
+    display: block;
+    border-radius: 200px;
+    box-sizing: border-box;
+    border: 1px solid #0000001f;
+    padding: 3px;
+    width:200px;
+    height:200px;
+    position:relative;
+    left:calc(50% - 100px);
+    margin-bottom:10px;
+  }
+/***************************************/
+
+/***************************************/
+/*****          Controls           *****/
+/***************************************/
+  #controls label {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 19px;
+    padding-bottom: 2px;
+  }
+  #controls  {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .control-radio:checked + label {border-bottom: 2px solid black;}
+/***************************************/
+
+/***************************************/
+/*****           Social            *****/
+/***************************************/
+  #contacts {
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 30px;
+  }
+  #social div {
+    text-align: center;
+    margin-top: 10px;
+  }
+  #social {
+    margin-block-start: 1em;
+  }
+  .name {
+    font-size: 30px;
+    font-weight: bold;
+  }
+/***************************************/
+
+/***************************************/
+/*****          General            *****/
+/***************************************/
+  div {
+    margin: 2px;
+  }
+  a {
+    text-decoration: none;
+  }
+  .separator {
+    margin: 4px 10px 4px;
+    border-right: 1px solid black;
+  }
+  .hidden {
+    display: none;
+  }
+  .glyph {
+    font-size: 12px;
+    margin-right: 3px;
+    color: black;
+  }
+  .glyph-l {
+    font-size: 20px;
+    color: black;
+  }
+  .black-link {
+    color: black !important;
+    border-bottom: 1px solid black;
+  }
+  .m-rl-5 {
+    margin: 0 5px;
+  }
+  .scrollbar::-webkit-scrollbar-track {
+      background-color: #e0e0e0;
+      border-left: 9px solid white;
+      border-right: 9px solid white;
+  }
+  .scrollbar::-webkit-scrollbar {
+      width: 20px;
+      background-color: #000000;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+      background-color: #a2a2a2;
+      border-left: 8px solid white;
+      border-right: 8px solid white;
+  }
+  .title {
+    text-transform: capitalize;
+  }
+  .article-close {
+    display: none;
+  }
+/***************************************/
+
+/***************************************/
+/*****      Cards + Article        *****/
+/***************************************/
+  #experience_history {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+  #education_history {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+  .card {
+    margin: 5px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px 0px #888888ad;
+    width: 500px;
+    height: auto;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  .card:hover {
+    box-shadow: 0px 0px 15px 0px #8888884f;
+  }
+  .card-logo {
+    display: block;
+    border-radius: 200px;
+    box-sizing: border-box;
+    border: 1px solid #0000001f;
+    padding: 3px;
+    width: 104px;
+    height: 104px;
+  }
+  .card-logo-holder {
+    display: inline-block;
+  }
+  .card-text {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    width: calc(100% - 120px);
+  }
+  .article-text {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+  }
+  .card-position {
+    font-size: 1.17em;
+    font-weight: bold;
+  }
+  .card-duration {
+    font-weight: bold;
+  }
+  .card-icons {
+    margin-top: 10px;
+  }
+  #article {
+    margin-left: 20px;
+  }
+  .article-logo {
+    height: 156px;
+    width: 156px;
+    margin: 10px;
+  }
+  .article-header {
+    border-bottom: 1px solid lightgrey;
+  }
+  .article-logo-holder {
+    display: inline-block;
+    border-right: 1px solid lightgrey;
+    margin-bottom: 0px;
+  }
+  .article-text {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 193px);
+  }
+  .article-middle-part {
+    border-bottom: 1px solid lightgrey;
+    padding: 15px 0;
+    margin-bottom: 20px;
+  }
+  .article-links {
+    margin-top: 15px;
+  }
+  .article-tag {
+    font-weight: bold;
+  }
+  .article-main {
+    margin-bottom: 50px;
+  }
+/***************************************/
+
+/***************************************/
+/*****          Responsive         *****/
+/***************************************/
+  @media only screen and (min-width: 320px) and (max-width: 1149px) {
+    body {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "contacts"
+        "controls"
+        "info";
+    }
+    #info {
+      grid-template-columns: 1fr;
+      grid-template-areas: 
+        "cards" 
+        "article";
+    }
+    .separator {
+      margin: 2px 5px 2px;;
+    }
+    .article-close {
+      display: block;
+      margin: 16px 0px 8px 0px;
+      border-bottom: 1px solid lightgrey;
+      padding-bottom: 16px;
+      padding-left: 14px;
+    }
+    .fullscreen-article {
+      position: fixed;
+      background: white;
+      width: 100%;
+      height: 100%;
+      top: -2px;
+      left: -20px;
+      overflow: auto;
+      overscroll-behavior: contain;
+    }
+  }
+  @media only screen and (min-width: 320px) and (max-width: 1300px) {
+    #contacts {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "profile"
+        "social"
+        "summary";
+    }
+  }
+  @media only screen and (min-width: 320px) and (max-width: 559px) {
+    .card {
+      width: auto;
+    }
+    .card-text {
+      width: auto;
+    }
+    .card-logo-holder {
+      display: none;
+    }
+  }
+  @media only screen and (min-width: 320px) and (max-width: 619px) {
+    .article-logo {
+      width: 104px;
+      height: 104px;
+    }
+    .article-text {
+      width: auto;
+      display: block;
+    }
+    .article-header {
+      padding-bottom: 20px;
+    }
+    .article-logo-holder {
+      border-right: none;
+      display: block;
+    }
+  }
+  @media only screen and (min-width: 620px) and (max-width: 1149px) {
+    .article-logo-holder {
+      margin-top: 0;
+    }
+    .article-close {
+      margin-bottom: 0;
+    }
+    .fullDescription {
+      width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background: white;
+      border: 1px solid lightgrey;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+    .fullscreen-article {
+      background-color: #ffffffe3;
+    }
+  }
+  @media only screen and (min-width: 560px) and (max-width: 1149px) {
+    #summary {
+      width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #experience_history, #education_history {
+      margin-right: auto;
+      margin-left: auto;
+      width: 546px;
+    }
+    .card {
+      width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  @media only screen and (min-width: 1150px) and (max-width: 1569px) {
+    body {
+        font-family: 'Ubuntu Mono', monospace;
+        display: grid;
+        grid-template-columns: 1fr 5fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+          ". contacts ."
+          ". controls ."
+          "info info info";
+      }
+    #info {
+      grid-template-columns: 546px minmax(566px, auto);
+      grid-template-areas: 
+        "cards article";
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #experience_history, #education_history {
+      width: 546px;
+    }
+  }
+  @media only screen and (min-width: 1310px) and (max-width: 1569px) {
+    #article {
+      width: 730px;
+    }
+  }
+/***************************************/
+  </style>
   <body>
-    <div class="header"></div>
-    <div class="center">
-      <div class="summary" id="about"></div>
-      <div>
-        <input id="experience_radio" name="section-title" type=radio class="invisible-radio invisible-radio-experience" checked>
-        <label class="section-header left-header" for="experience_radio" onclick="emptyExtendedView()">Experience</label>
-        <span class="article-separator"></span>
-        <input id="education_radio" name="section-title" type=radio class="invisible-radio invisible-radio-education">
-        <label class="section-header" for="education_radio" onclick="emptyExtendedView()" >Education</label>
-        <div class="timeline-holder">
-          <div class="timeline">
-              <div id="experience" class="sector style-3"></div>
-              <div id="education" class="sector style-3"></div>
-          </div>
-          <div id="article" class="extendedView" ></div>
-        </div>
-      </div>
+    <div id="contacts"></div>
+    <div id="controls">
+      <input id="experience" name="controls" type=radio class="control-radio hidden" checked onchange="toggleTimeline()"/>
+      <label for="experience">Experience</label>
+      <span class="separator"></span>
+      <input id="education" name="controls" type=radio class="control-radio hidden" onchange="toggleTimeline()"/>
+      <label for="education">Education</label>
     </div>
-    <div class="footer"></div>
-    <script type="text/babel">
+    <div id="info">
+      <div id="cards">
+        <div id="experience_history" class="scrollbar"></div>
+        <div id="education_history" class="scrollbar hidden"></div>
+      </div>
+      <div id="article"></div>
+    </div>
+    <script>
+      const types = {
+        xp: 'experience',
+        edu: 'education'
+      };
+
       const contacts = {
         Name: 'Harutyun Harutyunyan',
         Phone: '+374 55 261 162',
@@ -494,22 +435,20 @@
         Profile: 'img/profile.jpg',
         Maps: 'Yerevan, Armenia',
         Location: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
-        About: <div>
-          <p>Software developer with 8+ years of experience working in the fields of artificial intelligence, 
-          finance, ecommerce, education and electronics automation. Seasoned problem-solving professional 
-          specializing on software architecture and automation. Some of the achievements I am proud of are: 
-          bootstrapping natural language processing technology at a startup, developing secure and automated 
-          electronic document system, creating automated software quality assurance frameworks. I’ve seen and 
-          worked with various technologies and languages, using the best for the problem.</p>
-          <p>I am passionate about artificial intelligence, financial software, open source and web technologies. 
-          I teach in my alma mater and in my spare time work on my personal projects, which varies from developing 
-          personal financing app to continuing my research in AI.</p>
-        </div>
+        About: '<p>Software developer with 8+ years of experience working in the fields of artificial intelligence, '
+          + 'finance, ecommerce, education and electronics automation. Seasoned problem-solving professional '
+          + 'specializing on software architecture and automation. Some of the achievements I am proud of are: '
+          + 'bootstrapping natural language processing technology at a startup, developing secure and automated '
+          + 'electronic document system, creating automated software quality assurance frameworks. I’ve seen and '
+          + 'worked with various technologies and languages, using the best for the problem.</p>'
+          + '<p>I am passionate about artificial intelligence, financial software, open source and web technologies. '
+          + 'I teach in my alma mater and in my spare time work on my personal projects, which varies from developing '
+          + 'personal financing app to continuing my research in AI.</p>'
       };
 
       const experiences = [
         {
-          Markup: <div></div>,
+          Markup: '<div></div>',
           Key: 'BuBu34',
           Company: 'Praemium',
           Position: 'Software Developer',
@@ -531,18 +470,18 @@
           }
         },
         {
-          Markup: <div>
-            <div>Teaching “Computer Organization” course based on my own course materials and syllabus.</div>
-            <div>Course includes:
-              <ul>
-                <li>High level knowledge of hardware architecture. Including high level understanding the way CPU cache works, registers, CMOS transistors.</li>
-                <li>Boolean algebra, number representation in x86 architecture, including optimization of formulas, floating point numbers.</li>
-                <li>Advanced Assembly language using NASM, including understanding the assembly compiles, working with stack, recursion in assembly.</li>
-              </ul>
-              Course also includes midterm and homework design, and final project. At he end of this course students are being able to design and implement a software in NASM language. 
-              Design and optimze boolean formulas. Including conversion of their written code into byte code.
-            </div>
-          </div>,
+          Markup: '<div>'
+            + '<div>Teaching “Computer Organization” course based on my own course materials and syllabus.</div>'
+            + '<div>Course includes:'
+              + '<ul>'
+                + '<li>High level knowledge of hardware architecture. Including high level understanding the way CPU cache works, registers, CMOS transistors.</li>'
+                + '<li>Boolean algebra, number representation in x86 architecture, including optimization of formulas, floating point numbers.</li>'
+                + '<li>Advanced Assembly language using NASM, including understanding the assembly compiles, working with stack, recursion in assembly.</li>'
+              + '</ul>'
+              + 'Course also includes midterm and homework design, and final project. At he end of this course students are being able to design and implement a software in NASM language. '
+              + 'Design and optimze boolean formulas. Including conversion of their written code into byte code.'
+            + '</div>'
+          + '</div>',
           Key: 'Abu123',
           Company: 'American University of Armenia',
           Position: 'Adjunct Lecturer',
@@ -564,47 +503,14 @@
           }
         },
         {
-          Markup: <div>
-            <div>Developed Electronic Document Management system for governmental customer, including document tracking, management, signage and secure storage.</div>
-            <div>As part of this work includes:
-              <ul>
-                <li>Implementing and supporting document signing protocols. Including storage and processing of documents and signatures.</li>
-                <li>Developing document generating mechanism, using templating mechanism, that reduced the time, for developers implementing custom reports, by half.</li>
-                <li>Desigining architecture around CQRS pattern, due to the future scale, and increasing of rate market share.</li>
-              </ul>
-              Work is done in a fast-paced agile team.
-            </div>
-            <div>Integrated business requirements, of a new major customer, which yielded in two-fold increase of project’s income.</div>
-          </div>,
-          Key: 'Kontur000',
-          Company: 'SKB Kontur',
-          Position: 'Software Engineer',
-          Description: 'Developed Electronic Document Management system for governmental customer, including document tracking, management, signage and secure storage. As part of this implemented document signing protocols, document storage and processing. Work is done in a fast-paced agile team. Integrated business requirements, of a new major customer, which yielded in two-fold increase of project’s income.',
-          Logo: 'img/Kontur.png',
-          Location: 'Yerevan, Armenia',
-          Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
-          Web: 'https://kontur.ru',
-          Labels: {
-            First: 'Industry',
-            Second: 'Technologies'
-          },
-          Industry: 'Financial Services (accounting), Electronic Document Management',
-          Technologies: 'C#, ASP.NET Core, EF Core, MVC, Microsoft SQL Server',
-          Duration: {
-            Start: new Date(Date.parse("2018-06-01T00:00:00+0000")),
-            End: new Date(Date.parse("2018-11-01T00:00:00+0000")),
-            IncludeDetails: true
-          }
-        },
-        {
-          Markup: <div>
-            Worked on internal and customer projects:
-            <ul>
-              <li>Bootstrapping an in-house, AI-based text processing, text analysis pipeline using ML and NLP algorithms. Main focus was on using Neural Network for predictions based on text content and context analysis, and fine-tuning processed data using NLP algorithms</li>
-              <li>Full-stack development of custom-tailored Learning Management System (LMS) for Mechner Foundation, an educational innovation non-profit. I worked on defining specification, architectural design back- and front-end development in collaboration with foundation’s stakeholders and educators. LMS was successfully piloted at foundation’s private schools and later expanded to public schools.</li>
-              <li>Developed warehouse automation tools for Carson-Dellosa Publishing LLC, an educational publisher. Work included communicating with management, warehouse staff and third-party vendors to define needs and goals. As a result, a web-based tool was created integrated into existing warehouse/logistics management software helping improve efficiency of day-to-day operations.</li>
-            </ul>
-          </div>,
+          Markup: '<div>'
+            + 'Worked on internal and customer projects:'
+            + '<ul>'
+              + '<li>Bootstrapping an in-house, AI-based text processing, text analysis pipeline using ML and NLP algorithms. Main focus was on using Neural Network for predictions based on text content and context analysis, and fine-tuning processed data using NLP algorithms</li>'
+              + '<li>Full-stack development of custom-tailored Learning Management System (LMS) for Mechner Foundation, an educational innovation non-profit. I worked on defining specification, architectural design back- and front-end development in collaboration with foundation’s stakeholders and educators. LMS was successfully piloted at foundation’s private schools and later expanded to public schools.</li>'
+              + '<li>Developed warehouse automation tools for Carson-Dellosa Publishing LLC, an educational publisher. Work included communicating with management, warehouse staff and third-party vendors to define needs and goals. As a result, a web-based tool was created integrated into existing warehouse/logistics management software helping improve efficiency of day-to-day operations.</li>'
+            + '</ul>'
+          + '</div>',
           Key: 'Redkite563',
           Company: 'Redkite',
           Position: 'Senior Software Engineer',
@@ -626,10 +532,43 @@
           }
         },
         {
-          Markup: <div>
-            <div>Conducting problem solving sessions in C++ and Java languages for CS department students.</div>
-            <div>Assisting students in understanding their homework assignment and project requirements. Discussing algorithms, possible solutions for problems, drawbacks and advantages.</div>
-          </div>,
+          Markup: '<div>'
+            + '<div>Developed Electronic Document Management system for governmental customer, including document tracking, management, signage and secure storage.</div>'
+            + '<div>As part of this work includes:'
+              + '<ul>'
+                + '<li>Implementing and supporting document signing protocols. Including storage and processing of documents and signatures.</li>'
+                + '<li>Developing document generating mechanism, using templating mechanism, that reduced the time, for developers implementing custom reports, by half.</li>'
+                + '<li>Desigining architecture around CQRS pattern, due to the future scale, and increasing of rate market share.</li>'
+              + '</ul>'
+              + 'Work is done in a fast-paced agile team.'
+            + '</div>'
+            + '<div>Integrated business requirements, of a new major customer, which yielded in two-fold increase of project’s income.</div>'
+          + '</div>',
+          Key: 'Kontur000',
+          Company: 'SKB Kontur',
+          Position: 'Software Engineer',
+          Description: 'Developed Electronic Document Management system for governmental customer, including document tracking, management, signage and secure storage. As part of this implemented document signing protocols, document storage and processing. Work is done in a fast-paced agile team. Integrated business requirements, of a new major customer, which yielded in two-fold increase of project’s income.',
+          Logo: 'img/Kontur.png',
+          Location: 'Yerevan, Armenia',
+          Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+          Web: 'https://kontur.ru',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
+          Industry: 'Financial Services (accounting), Electronic Document Management',
+          Technologies: 'C#, ASP.NET Core, EF Core, MVC, Microsoft SQL Server',
+          Duration: {
+            Start: new Date(Date.parse("2018-06-01T00:00:00+0000")),
+            End: new Date(Date.parse("2018-11-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
+        },
+        {
+          Markup: '<div>'
+            + '<div>Conducting problem solving sessions in C++ and Java languages for CS department students.</div>'
+            + '<div>Assisting students in understanding their homework assignment and project requirements. Discussing algorithms, possible solutions for problems, drawbacks and advantages.</div>'
+          + '</div>',
           Key: 'Abu124',
           Company: 'American University of Armenia',
           Position: 'Teaching Associate',
@@ -651,15 +590,15 @@
           }
         },
         {
-          Markup: <div>
-            Worked on various projects, oriented on customer-specific feature implementation in Electronic Design Automation industry.
-            <ul>
-              <li>Developed user interface and report generation for manufacturing yield analysis software.</li>
-              <li>As part of internal research group worked on continuous improvement of development process, particularly developed a tool for daily quality report extraction and analysis.</li>
-              <li>The work included hyperparameter tweaking of an in-house Machine Learning algorithm used for yield prediction.</li>
-              <li>This helped to improve development cycle and for main product to become industry leading yield analysis tool.</li>
-            </ul>
-          </div>,
+          Markup: '<div>'
+            + 'Worked on various projects, oriented on customer-specific feature implementation in Electronic Design Automation industry.'
+            + '<ul>'
+              + '<li>Developed user interface and report generation for manufacturing yield analysis software.</li>'
+              + '<li>As part of internal research group worked on continuous improvement of development process, particularly developed a tool for daily quality report extraction and analysis.</li>'
+              + '<li>The work included hyperparameter tweaking of an in-house Machine Learning algorithm used for yield prediction.</li>'
+              + '<li>This helped to improve development cycle and for main product to become industry leading yield analysis tool.</li>'
+            + '</ul>'
+          + '</div>',
           Key: 'SNPS58-96',
           Company: 'Synopsys',
           Position: 'R&D Engineer I',
@@ -681,13 +620,13 @@
           }
         },
         {
-          Markup: <div>
-            Worked on automating software QA, including regression and UI testing.
-            <ul>
-              <li>Main result was developing a new multi-platform (Linux and Windows) regression test framework, defined a new standard for the test case development.</li>
-              <li>Automated parallelization of test runs for Windows platform.</li>
-            </ul>
-          </div>,
+          Markup: '<div>'
+            + 'Worked on automating software QA, including regression and UI testing.'
+            + '<ul>'
+              + '<li>Main result was developing a new multi-platform (Linux and Windows) regression test framework, defined a new standard for the test case development.</li>'
+              + '<li>Automated parallelization of test runs for Windows platform.</li>'
+            + '</ul>'
+          + '</div>',
           Key: 'SNPS58-97',
           Company: 'Synopsys',
           Position: 'Quality Engineer I',
@@ -709,13 +648,13 @@
           }
         },
         {
-          Markup: <div>
-            Worked on various projects related to Electronic Design Automation.
-            <ul>
-              <li>Automated translation of integrated circuit verification rules between technologies.</li>
-              <li>Created ad-hoc scripts for workflow automation. Later became QA intern.</li>
-            </ul>
-          </div>,
+          Markup: '<div>'
+            + 'Worked on various projects related to Electronic Design Automation.'
+            + '<ul>'
+              + '<li>Automated translation of integrated circuit verification rules between technologies.</li>'
+              + '<li>Created ad-hoc scripts for workflow automation. Later became QA intern.</li>'
+            + '</ul>'
+          + '</div>',
           Key: 'SNPS58-98',
           Company: 'Synopsys',
           Position: 'Internship',
@@ -737,7 +676,7 @@
           }
         },
         {
-          Markup: <div>Optimization and refactoring of ad-hoc automation scripts.</div>,
+          Markup: '<div>Optimization and refactoring of ad-hoc automation scripts.</div>',
           Key: 'Inta-65',
           Company: 'Instigate Design',
           Position: 'Internship',
@@ -762,7 +701,7 @@
 
       const studies = [
         {
-          Markup: <div>Graduation work: Modelling an Interactive Multi-Agent System.</div>,
+          Markup: '<div>Graduation work: Modelling an Interactive Multi-Agent System.</div>',
           Key: 'BuBu34_',
           Company: 'American University of Armenia',
           Position: 'Master\'s degree in Computer and Information Sciences',
@@ -784,7 +723,7 @@
           }
         },
         {
-          Markup: <div>Graduation work: Analog and mixed signal circuits physical design automation tool.</div>,
+          Markup: '<div>Graduation work: Analog and mixed signal circuits physical design automation tool.</div>',
           Key: 'Abu123_',
           Company: 'National Polytechnic University of Armenia',
           Position: 'Bachelor\'s degree in Engineering (Informatics and Computer Science)',
@@ -806,11 +745,6 @@
           }
         }
       ];
-
-      function emptyExtendedView() {
-        var article = document.getElementById('article');
-        ReactDOM.unmountComponentAtNode(article);
-      }
 
       function generateDuration(start, end, includeDetails) {
         const reg = /^.+ \d+ (\w+) (\d+)/;
@@ -839,153 +773,140 @@
         return result;
       }
 
-      function Card(props) {
-        var duration = generateDuration(props.value.Duration.Start, props.value.Duration.End, props.value.Duration.IncludeDetails);
-        return (
-          <div className="card" onClick={props.onClick}>
-            <div className="card-top-part" >
-                <div className="card-logo-holder"><img src={props.value.Logo} alt="Company logo" className="card-logo" /></div>
-                <div className="card-text">
-                    <h3 className="card-position" >{props.value.Position}</h3>
-                    <h4 className="article-duration">{duration}</h4>
-                    <div className="card-icons">
-                        <div className="card-small-text" ><a href={props.value.Web} className="article-company">{props.value.Company}</a></div>
-                        <span className="card-small-text-separator article-separator"></span>
-                        <div className="card-small-text" ><a href={props.value.Maps} className="article-location">{props.value.Location}</a></div>
-                    </div>
-                </div>
-            </div>
-            <div className="showHide">
-                <input type="checkbox" className="toggle" id={props.value.Key}/>
-                <label htmlFor={props.value.Key} className="chevron">
-                    <span className="expand">
-                        <span className="arrow-up"><i className="fas fa-chevron-up"></i></span>
-                        <span className="arrow-dn"><i className="fas fa-chevron-down"></i></span>
-                    </span>
-                </label>
-                <div className="colapsableContainer">
-                    <div className="card-middle-part">
-                        <div>
-                            <span className="card-tag">{props.value.Labels.First}: </span><span className="card-tag-value" >{props.value.Industry}</span>
-                        </div>
-                        <div>
-                            <span className="card-tag">{props.value.Labels.Second}: </span><span className="card-tag-value short" >{props.value.Technologies}</span>
-                        </div>
-                    </div>
-                    <div className="card-bottom-part">
-                        <div className="short-multi">{props.value.Markup}</div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        );
+      function addContacts() {
+        var content = '<div id="profile"><img src="' + contacts.Profile + '" alt="Profile photo" class="profile-photo" /></div>'
+          + '<div id="social">'
+            + '<div class="name">' + contacts.Name + '</div>'
+            + '<div><a href="mailto:' + contacts.Email + '" class="black-link"><i class="glyph fas fa-envelope"></i>' + contacts.Email + '</a></div>'
+            + '<div>'
+              + '<span><a href="' + contacts.Location + '" class="black-link"><i class="glyph fa fa-map-marker-alt"></i>' + contacts.Maps + '</a></span>'
+              + '<span class="separator"></span>'
+              + '<span><i class="glyph fas fa-phone"></i>' + contacts.Phone + '</span>'
+            + '</div>'
+            + '<div>'
+              + '<a href="' + contacts.Github + '"><i class="glyph-l m-rl-5 fab fa-github"></i></a>'
+              + '<a href="' + contacts.Linkedin + '"><i class="glyph-l m-rl-5 fab fa-linkedin-in"></i></a>'
+            + '</div>'
+          + '</div>'
+          + '<div id="summary">' + contacts.About + '</div>';
+
+          var place = $('#contacts').append(content);
       }
 
-      function Article(props) {
-        var duration = generateDuration(props.value.Duration.Start, props.value.Duration.End, props.value.Duration.IncludeDetails);
-        return (
-          <div className="fullDescription">
-            <div className="article-header" >
-                <div className="article-logo-holder"><img src={props.value.Logo} alt="Company logo" className="article-logo" /></div>
-                <div className="article-text">
-                    <h3 className="article-position" >{props.value.Position}</h3>
-                    <h4 className="article-duration">{duration}</h4>
-                    <div>
-                      <a href={props.value.Web} className="article-company"><i className="article-glyph fa fa-globe"></i>{props.value.Company}</a>
-                      <span className="article-separator"></span>
-                      <a href={props.value.Maps} className="article-location"><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Location}</a>
-                    </div>
-                </div>
-            </div>
-              <div className="article-content">
-                <div className="article-middle-part">
-                    <div>
-                        <span className="article-tag">{props.value.Labels.First}: </span><span className="article-tag-value" >{props.value.Industry}</span>
-                    </div>
-                    <div>
-                        <span className="article-tag">{props.value.Labels.Second}: </span><span className="article-tag-value short" >{props.value.Technologies}</span>
-                    </div>
-                  </div>
-              <div>{props.value.Markup}</div>
-            </div>
-            <div className="article-footer"></div>
-          </div>
-        );
+      function addCard(card, type) {
+        var duration = generateDuration(card.Duration.Start, card.Duration.End, card.Duration.IncludeDetails);
+        var content = '<div class="card" onclick="expandCard(\'' + card.Key + '\', \'' + type + '\')">'
+          + '<div class="card-top-part" >'
+              + '<div class="card-logo-holder"><img src="' + card.Logo + '" alt="Company logo" class="card-logo" /></div>'
+              + '<div class="card-text">'
+                  + '<div class="card-position" >' + card.Position + '</div>'
+                  + '<div class="card-duration">' + duration + '</div>'
+                  + '<div class="card-icons">'
+                      + '<div><a href="' + card.Web + '"  class="black-link">' + card.Company + '</a></div>'
+                      + '<div><a href="' + card.Maps + '"  class="black-link">' + card.Location + '</a></div>'
+                  + '</div>'
+              + '</div>'
+          + '</div>'
+        + '</div>';
+        var place = $('#' + type + '_history').append(content);
       }
 
-      function About(props) {
-        return (
-          <div>
-            <div>
-              <img src={props.value.Profile} alt="Profile photo" className="profile-photo" />
-            </div>
-            <div>
-              <div className="about-contacts" >
-                <h2 className="about-name" >{props.value.Name}</h2>
-                <div className="about-middle-single" >
-                  <a href={"mailto:" + props.value.Email} className="black-link" ><i className="article-glyph fas fa-envelope"></i>{props.value.Email}</a>
-                </div>
-                <div className="about-middle" >
-                  <a href={props.value.Location} className="black-link" ><i className="article-glyph fa fa-map-marker-alt"></i>{props.value.Maps}</a>
-                  <span className="article-separator"></span>
-                  <span><i className="article-glyph fas fa-phone"></i>{props.value.Phone}</span>
-                </div>
-                <div className="about-glyphs" >
-                  <a href={props.value.Github} ><i className="black about-glyph fab fa-github"></i></a>
-                  <a href={props.value.Twitter} ><i className="black about-glyph fab fa-twitter"></i></a>
-                  <a href={props.value.Medium} ><i className="black about-glyph fab fa-medium"></i></a>
-                  <a href={props.value.Linkedin} ><i className="black about-glyph fab fa-linkedin-in"></i></a>
-                </div>
-              </div>
-              <div className="about-summary" >{props.value.About}</div>
-            </div>
-          </div>
-        );
+      function addArticle(card, type) {
+        $('#article').empty();
+        $('#article').addClass('fullscreen-article');
+        var duration = generateDuration(card.Duration.Start, card.Duration.End, card.Duration.IncludeDetails);
+        var content = '<div class="fullDescription">'
+            + '<div class="article-header" >'
+                + '<div class="article-close" onclick="closeArticle()"><i class="fa fa-arrow-left" aria-hidden="true"></i><span class="separator"></span><span class="title">' + type + '<span></div>'
+                + '<div class="article-logo-holder"><img src="' + card.Logo + '"" alt="Company logo" class="article-logo" /></div>'
+                + '<div class="article-text">'
+                    + '<div class="card-position" >' + card.Position + '</div>'
+                    + '<div class="card-duration">' + duration + '</div>'
+                    + '<div class="article-links">'
+                      + '<a href="' + card.Web + '" class="black-link"><i class="glyph fa fa-globe"></i>' + card.Company + '</a>'
+                      + '<span class="separator"></span>'
+                      + '<a href="' + card.Maps + '"  class="black-link"><i class="glyph fa fa-map-marker-alt"></i>' + card.Location + '</a>'
+                    + '</div>'
+                + '</div>'
+            + '</div>'
+              + '<div class="article-content">'
+                + '<div class="article-middle-part">'
+                    + '<div>'
+                        + '<span class="article-tag">' + card.Labels.First + ': </span><span class="article-tag-value" >' + card.Industry + '</span>'
+                    + '</div>'
+                    + '<div>'
+                        + '<span class="article-tag">' + card.Labels.Second + ': </span><span class="article-tag-value short" >' + card.Technologies + '</span>'
+                    + '</div>'
+                  + '</div>'
+              + '<div class="article-main">' + card.Markup + '</div>'
+            + '</div>'
+            + '<div class="article-footer"></div>'
+          + '</div>';
+        var place = $('#article').append(content);
       }
 
-      class Experience extends React.Component {
-        clickToExtend(job) {
-            var result = <Article value={job} />;
-            ReactDOM.render(result, document.getElementById('article'));
-        }
-
-        renderJob(job) {
-          return (<Card value={job} onClick={() => this.clickToExtend(job)} />);
-        }
-
-        render() {
-            var result = [];
-            for (var i = 0; i < experiences.length; i++) { 
-                var job = experiences[i];
-                result.push(this.renderJob(job));
-            }
-            return (<div className="card-holder">{result}</div>);
-        }
+      function closeArticle() {
+        $('#article').empty();
+        $('#article').removeClass('fullscreen-article');
       }
-      
-      class Education extends React.Component {
-        clickToExtend(study) {
-            var result = <Article value={study} />;
-            ReactDOM.render(result, document.getElementById('article'));
+
+      function expandCard(key, type) {
+        var list = [];
+        switch (type) {
+          case types.xp:
+            list = experiences;
+            break;
+          case types.edu:
+            list = studies;
+            break;
         }
 
-        renderJob(study) {
-          return (<Card value={study} onClick={() => this.clickToExtend(study)} />);
-        }
+        var item = undefined;
+        list.forEach(i => {
+          item = i.Key === key ? i : item;
+        });
 
-        render() {
-            var result = [];
-            for (var i = 0; i < studies.length; i++) { 
-                var study = studies[i];
-                result.push(this.renderJob(study));
-            }
-            return (<div>{result}</div>);
+        addArticle(item, type);
+      }
+
+      // todo: selecting Experience tab, when it is already
+      // selected removes visible article. Change that.
+      function addExperience() {
+        experiences.forEach(xp => {
+          addCard(xp, types.xp);
+        });
+        // addArticle(experiences[0]);
+      }
+
+      function addEducation() {
+        studies.forEach(edu => {
+          addCard(edu, types.edu);
+        });
+      }
+
+      function generateContent() {
+        addContacts();
+        addExperience();
+        addEducation();
+      }
+
+      // todo: Implement hide/show without jquery
+      // jquery implementation has no animation, just because
+      // they set style "display: none|block" to the element.
+      // Toggling between hidden css class has the animation.
+      function toggleTimeline() {
+        $('#article').empty();
+        var target = event.target;
+        if (target.id === types.xp) {
+          $('#' + types.xp + '_history').show();
+          $('#' + types.edu + '_history').hide();
+        } else {
+          $('#' + types.edu + '_history').show();
+          $('#' + types.xp + '_history').hide();
         }
       }
 
-      ReactDOM.render(<About value={contacts} />, document.getElementById('about'));
-      ReactDOM.render(<Experience />, document.getElementById('experience'));
-      ReactDOM.render(<Education />, document.getElementById('education'));
+      generateContent();
     </script>
   </body>
 </html>
