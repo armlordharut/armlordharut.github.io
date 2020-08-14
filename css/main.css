@@ -1,0 +1,395 @@
+/***************************************/
+/*****            Grid             *****/
+/***************************************/
+body {
+  font-family: 'Ubuntu Mono', monospace;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". contacts ."
+    ". controls ."
+    ". info .";
+}
+#contacts {
+  grid-area: contacts;
+  display: grid;
+  grid-template-columns: 3fr 2fr 3fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    ". profile ."
+    "social summary summary";
+}
+#controls {
+  grid-area: controls;
+}
+#info {
+  grid-area: info;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: auto;
+  grid-template-areas: "cards article";
+}
+#cards {
+  grid-area: cards;
+}
+#article {
+  grid-area: article;
+}
+#profile {
+  grid-area: profile;
+}
+#social {
+  grid-area: social;
+}
+#summary {
+  grid-area: summary;
+}
+/***************************************/
+
+/***************************************/
+/*****           About             *****/
+/***************************************/
+.profile-photo {
+  display: block;
+  border-radius: 200px;
+  box-sizing: border-box;
+  border: 1px solid #0000001f;
+  padding: 3px;
+  width:200px;
+  height:200px;
+  position:relative;
+  left:calc(50% - 100px);
+  margin-bottom:10px;
+}
+/***************************************/
+
+/***************************************/
+/*****          Controls           *****/
+/***************************************/
+#controls label {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 19px;
+  padding-bottom: 2px;
+}
+#controls  {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.control-radio:checked + label {border-bottom: 2px solid black;}
+/***************************************/
+
+/***************************************/
+/*****           Social            *****/
+/***************************************/
+#contacts {
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 30px;
+}
+#social div {
+  text-align: center;
+  margin-top: 10px;
+}
+#social {
+  margin-block-start: 1em;
+}
+.name {
+  font-size: 30px;
+  font-weight: bold;
+}
+.position {
+  font-size: 21px;
+}
+/***************************************/
+
+/***************************************/
+/*****          General            *****/
+/***************************************/
+div {
+  margin: 2px;
+}
+a {
+  text-decoration: none;
+}
+.separator {
+  margin: 4px 10px 4px;
+  border-right: 1px solid black;
+}
+.hidden {
+  display: none;
+}
+.glyph {
+  font-size: 12px;
+  margin-right: 3px;
+  color: black;
+}
+.glyph-l {
+  font-size: 20px;
+  color: black;
+}
+.black-link {
+  color: black !important;
+  border-bottom: 1px solid black;
+}
+.m-rl-5 {
+  margin: 0 5px;
+}
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #e0e0e0;
+  border-left: 9px solid white;
+  border-right: 9px solid white;
+}
+.scrollbar::-webkit-scrollbar {
+  width: 20px;
+  background-color: #000000;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #a2a2a2;
+  border-left: 8px solid white;
+  border-right: 8px solid white;
+}
+.title {
+  text-transform: capitalize;
+}
+.article-close {
+  display: none;
+}
+/***************************************/
+
+/***************************************/
+/*****      Cards + Article        *****/
+/***************************************/
+#experience_history {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+#education_history {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.card {
+  margin: 5px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 2px 0px #888888ad;
+  width: 500px;
+  height: auto;
+  position: relative;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.card:hover {
+  box-shadow: 0px 0px 15px 0px #8888884f;
+}
+.card-logo {
+  display: block;
+  border-radius: 200px;
+  box-sizing: border-box;
+  border: 1px solid #0000001f;
+  padding: 3px;
+  width: 104px;
+  height: 104px;
+}
+.card-logo-holder {
+  display: inline-block;
+}
+.card-text {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  width: calc(100% - 120px);
+}
+.article-text {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+}
+.card-position {
+  font-size: 1.17em;
+  font-weight: bold;
+}
+.card-duration {
+  font-weight: bold;
+}
+.card-icons {
+  margin-top: 10px;
+}
+#article {
+  margin-left: 20px;
+}
+.article-logo {
+  height: 156px;
+  width: 156px;
+  margin: 10px;
+}
+.article-header {
+  border-bottom: 1px solid lightgrey;
+}
+.article-logo-holder {
+  display: inline-block;
+  border-right: 1px solid lightgrey;
+  margin-bottom: 0px;
+}
+.article-text {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 193px);
+}
+.article-middle-part {
+  border-bottom: 1px solid lightgrey;
+  padding: 15px 0;
+  margin-bottom: 20px;
+}
+.article-links {
+  margin-top: 15px;
+}
+.article-tag {
+  font-weight: bold;
+}
+.article-main {
+  margin-bottom: 50px;
+}
+/***************************************/
+
+/***************************************/
+/*****          Responsive         *****/
+/***************************************/
+@media only screen and (min-width: 320px) and (max-width: 1149px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "contacts"
+      "controls"
+      "info";
+  }
+  #info {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "cards" 
+      "article";
+  }
+  .separator {
+    margin: 2px 5px 2px;;
+  }
+  .article-close {
+    display: block;
+    margin: 16px 0px 8px 0px;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 16px;
+    padding-left: 14px;
+  }
+  .fullscreen-article {
+    position: fixed;
+    background: white;
+    width: 100%;
+    height: 100%;
+    top: -2px;
+    left: -20px;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 1300px) {
+  #contacts {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "profile"
+      "social"
+      "summary";
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 559px) {
+  .card {
+    width: auto;
+  }
+  .card-text {
+    width: auto;
+  }
+  .card-logo-holder {
+    display: none;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 619px) {
+  .article-logo {
+    width: 104px;
+    height: 104px;
+  }
+  .article-text {
+    width: auto;
+    display: block;
+  }
+  .article-header {
+    padding-bottom: 20px;
+  }
+  .article-logo-holder {
+    border-right: none;
+    display: block;
+  }
+}
+@media only screen and (min-width: 620px) and (max-width: 1149px) {
+  .article-logo-holder {
+    margin-top: 0;
+  }
+  .article-close {
+    margin-bottom: 0;
+  }
+  .fullDescription {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border: 1px solid lightgrey;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  .fullscreen-article {
+    background-color: #ffffffe3;
+  }
+}
+@media only screen and (min-width: 560px) and (max-width: 1149px) {
+  #summary {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #experience_history, #education_history {
+    margin-right: auto;
+    margin-left: auto;
+    width: 546px;
+  }
+  .card {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media only screen and (min-width: 1150px) and (max-width: 1569px) {
+  body {
+      font-family: 'Ubuntu Mono', monospace;
+      display: grid;
+      grid-template-columns: 1fr 5fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        ". contacts ."
+        ". controls ."
+        "info info info";
+    }
+  #info {
+    grid-template-columns: 546px minmax(566px, auto);
+    grid-template-areas: 
+      "cards article";
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #experience_history, #education_history {
+    width: 546px;
+  }
+}
+@media only screen and (min-width: 1310px) and (max-width: 1569px) {
+  #article {
+    width: 730px;
+  }
+}
+/***************************************/
