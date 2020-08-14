@@ -4,8 +4,12 @@
     <meta charset="utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>undefined person</title>
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" 
+          rel="stylesheet">
+    <link rel="stylesheet" 
+          href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" 
+          crossorigin="anonymous">
     <script src="jquery-3.5.1.js"></script>
   </head>
   <style>
@@ -109,6 +113,9 @@
   .name {
     font-size: 30px;
     font-weight: bold;
+  }
+  .position {
+    font-size: 21px;
   }
 /***************************************/
 
@@ -418,6 +425,74 @@
       </div>
       <div id="article"></div>
     </div>
+    <template id="contacts_template">
+      <div id="profile"><img src="{{Profile}}" alt="Profile photo" class="profile-photo" /></div>
+      <div id="social">
+        <div class="name">{{Name}}</div>
+        <div class="position">{{Position}}</div>
+        <!-- <div>
+          <span><a href="{{Location}}" class="black-link"><i class="glyph fa fa-map-marker-alt"></i>{{Maps}}</a></span>
+          <span class="separator"></span>
+          <span><i class="glyph fas fa-phone"></i>{{Phone}}</span>
+        </div> -->
+        <div>
+          <span><a href="{{Location}}" class="black-link"><i class="glyph fa fa-map-marker-alt"></i>{{Maps}}</a></span>
+          <span class="separator"></span>
+          <span>
+            <a href="{{Github}}"><i class="glyph-l m-rl-5 fab fa-github"></i></a>
+            <a href="{{Linkedin}}"><i class="glyph-l m-rl-5 fab fa-linkedin-in"></i></a>
+          </span>
+        </div>
+      </div>
+      <div id="summary">{{About}}</div>
+    </template>
+    <template id="cards_template">
+      <div class="card" onclick="expandCard('{{Key}}','{{Type}}')">
+        <div class="card-top-part" >
+          <div class="card-logo-holder"><img src="{{Logo}}" alt="Company logo" class="card-logo" /></div><!--
+       --><div class="card-text">
+            <div class="card-position" >{{Position}}</div>
+            <div class="card-duration">{{CalculatedDuration}}</div>
+            <div class="card-icons">
+              <div><a href="{{Web}}"  class="black-link">{{Company}}</a></div>
+              <div><a href="{{Maps}}"  class="black-link">{{Location}}</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template id="article_template">
+      <div class="fullDescription">
+        <div class="article-header">
+          <div class="article-close" onclick="closeArticle()">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <span class="separator"></span><span class="title">{{Type}}<span>
+          </div>
+          <div class="article-logo-holder"><img src="{{Logo}}" alt="Company logo" class="article-logo" /></div><!--
+       --><div class="article-text">
+            <div class="card-position" >{{Position}}</div>
+            <div class="card-duration">{{CalculatedDuration}}</div>
+            <div class="article-links">
+              <a href="{{Web}}" class="black-link"><i class="glyph fa fa-globe"></i>{{Company}}</a>
+              <span class="separator"></span>
+              <a href="{{Maps}}"  class="black-link"><i class="glyph fa fa-map-marker-alt"></i>{{Location}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="article-content">
+          <div class="article-middle-part">
+            <div>
+              <span class="article-tag">{{Labels.First}}: </span><span class="article-tag-value" >{{Industry}}</span>
+            </div>
+            <div>
+              <span class="article-tag">{{Labels.Second}}: </span><span class="article-tag-value short" >{{Technologies}}</span>
+            </div>
+          </div>
+          <div class="article-main">{{Markup}}</div>
+        </div>
+        <div class="article-footer"></div>
+      </div>
+    </template>
     <script>
       const types = {
         xp: 'experience',
@@ -426,11 +501,8 @@
 
       const contacts = {
         Name: 'Harutyun Harutyunyan',
-        Phone: '+374 55 261 162',
-        Email: 'harutyunyan.harutyun@gmail.com',
+        Position: 'Senior Software Engineer',
         Linkedin: 'https://www.linkedin.com/in/haruth',
-        Twitter: 'https://twitter.com/ArmlordHarut',
-        Medium: 'https://medium.com/@ArmlordHarut',
         Github: 'https://github.com/armlordharut',
         Profile: 'img/profile.jpg',
         Maps: 'Yerevan, Armenia',
@@ -504,35 +576,6 @@
         },
         {
           Markup: '<div>'
-            + 'Worked on internal and customer projects:'
-            + '<ul>'
-              + '<li>Bootstrapping an in-house, AI-based text processing, text analysis pipeline using ML and NLP algorithms. Main focus was on using Neural Network for predictions based on text content and context analysis, and fine-tuning processed data using NLP algorithms</li>'
-              + '<li>Full-stack development of custom-tailored Learning Management System (LMS) for Mechner Foundation, an educational innovation non-profit. I worked on defining specification, architectural design back- and front-end development in collaboration with foundation’s stakeholders and educators. LMS was successfully piloted at foundation’s private schools and later expanded to public schools.</li>'
-              + '<li>Developed warehouse automation tools for Carson-Dellosa Publishing LLC, an educational publisher. Work included communicating with management, warehouse staff and third-party vendors to define needs and goals. As a result, a web-based tool was created integrated into existing warehouse/logistics management software helping improve efficiency of day-to-day operations.</li>'
-            + '</ul>'
-          + '</div>',
-          Key: 'Redkite563',
-          Company: 'Redkite',
-          Position: 'Senior Software Engineer',
-          Description: 'Worked on internal and customer projects: -    Bootstrapping an in-house, AI-based text processing, text analysis pipeline using ML and NLP algorithms. Main focus was on using Neural Network for predictions based on text content and context analysis, and fine-tuning processed data using NLP algorithms -    Full-stack development of custom-tailored Learning Management System (LMS) for Mechner Foundation, an educational innovation non-profit. I worked on defining specification, architectural design back- and front-end development in collaboration with foundation’s stakeholders and educators. LMS was successfully piloted at foundation’s private schools and later expanded to public schools. -    Developed warehouse automation tools for Carson-Dellosa Publishing LLC, an educational publisher. Work included communicating with management, warehouse staff and third-party vendors to define needs and goals. As a result, a web-based tool was created integrated into existing warehouse/logistics management software helping improve efficiency of day-to-day operations.',
-          Logo: 'img/Redkite.png',
-          Location: 'Yerevan, Armenia',
-          Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
-          Web: 'https://redkite.io/',
-          Labels: {
-            First: 'Industry',
-            Second: 'Technologies'
-          },
-          Industry: 'e-Commerce, Behaiovarol Science',
-          Technologies: 'C#, .NET Core, WCF, SOAP, MVC, Node.js (Express, MongoDb), JQuery/CSS, Python (TensorFlow, NLTK, Flask), Microsoft SQL Server',
-          Duration: {
-            Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
-            End: new Date(Date.parse("2018-06-01T00:00:00+0000")),
-            IncludeDetails: true
-          }
-        },
-        {
-          Markup: '<div>'
             + '<div>Developed Electronic Document Management system for governmental customer, including document tracking, management, signage and secure storage.</div>'
             + '<div>As part of this work includes:'
               + '<ul>'
@@ -561,6 +604,35 @@
           Duration: {
             Start: new Date(Date.parse("2018-06-01T00:00:00+0000")),
             End: new Date(Date.parse("2018-11-01T00:00:00+0000")),
+            IncludeDetails: true
+          }
+        },
+        {
+          Markup: '<div>'
+            + 'Worked on internal and customer projects:'
+            + '<ul>'
+              + '<li>Bootstrapping an in-house, AI-based text processing, text analysis pipeline using ML and NLP algorithms. Main focus was on using Neural Network for predictions based on text content and context analysis, and fine-tuning processed data using NLP algorithms</li>'
+              + '<li>Full-stack development of custom-tailored Learning Management System (LMS) for Mechner Foundation, an educational innovation non-profit. I worked on defining specification, architectural design back- and front-end development in collaboration with foundation’s stakeholders and educators. LMS was successfully piloted at foundation’s private schools and later expanded to public schools.</li>'
+              + '<li>Developed warehouse automation tools for Carson-Dellosa Publishing LLC, an educational publisher. Work included communicating with management, warehouse staff and third-party vendors to define needs and goals. As a result, a web-based tool was created integrated into existing warehouse/logistics management software helping improve efficiency of day-to-day operations.</li>'
+            + '</ul>'
+          + '</div>',
+          Key: 'Redkite563',
+          Company: 'Redkite',
+          Position: 'Senior Software Engineer',
+          Description: 'Worked on internal and customer projects: -    Bootstrapping an in-house, AI-based text processing, text analysis pipeline using ML and NLP algorithms. Main focus was on using Neural Network for predictions based on text content and context analysis, and fine-tuning processed data using NLP algorithms -    Full-stack development of custom-tailored Learning Management System (LMS) for Mechner Foundation, an educational innovation non-profit. I worked on defining specification, architectural design back- and front-end development in collaboration with foundation’s stakeholders and educators. LMS was successfully piloted at foundation’s private schools and later expanded to public schools. -    Developed warehouse automation tools for Carson-Dellosa Publishing LLC, an educational publisher. Work included communicating with management, warehouse staff and third-party vendors to define needs and goals. As a result, a web-based tool was created integrated into existing warehouse/logistics management software helping improve efficiency of day-to-day operations.',
+          Logo: 'img/Redkite.png',
+          Location: 'Yerevan, Armenia',
+          Maps: 'https://goo.gl/maps/jj2kWquvd2yXBtnm9',
+          Web: 'https://redkite.io/',
+          Labels: {
+            First: 'Industry',
+            Second: 'Technologies'
+          },
+          Industry: 'e-Commerce, Behaiovarol Science',
+          Technologies: 'C#, .NET Core, WCF, SOAP, MVC, Node.js (Express, MongoDb), JQuery/CSS, Python (TensorFlow, NLTK, Flask), Microsoft SQL Server',
+          Duration: {
+            Start: new Date(Date.parse("2016-02-01T00:00:00+0000")),
+            End: new Date(Date.parse("2018-06-01T00:00:00+0000")),
             IncludeDetails: true
           }
         },
@@ -773,81 +845,197 @@
         return result;
       }
 
-      function addContacts() {
-        var content = '<div id="profile"><img src="' + contacts.Profile + '" alt="Profile photo" class="profile-photo" /></div>'
-          + '<div id="social">'
-            + '<div class="name">' + contacts.Name + '</div>'
-            + '<div><a href="mailto:' + contacts.Email + '" class="black-link"><i class="glyph fas fa-envelope"></i>' + contacts.Email + '</a></div>'
-            + '<div>'
-              + '<span><a href="' + contacts.Location + '" class="black-link"><i class="glyph fa fa-map-marker-alt"></i>' + contacts.Maps + '</a></span>'
-              + '<span class="separator"></span>'
-              + '<span><i class="glyph fas fa-phone"></i>' + contacts.Phone + '</span>'
-            + '</div>'
-            + '<div>'
-              + '<a href="' + contacts.Github + '"><i class="glyph-l m-rl-5 fab fa-github"></i></a>'
-              + '<a href="' + contacts.Linkedin + '"><i class="glyph-l m-rl-5 fab fa-linkedin-in"></i></a>'
-            + '</div>'
-          + '</div>'
-          + '<div id="summary">' + contacts.About + '</div>';
+      function empty(id) {
+        var node = document.getElementById(id);
+        if (node !== null) {
+          if( typeof Element.prototype.clearChildren === 'undefined' ) {
+            Object.defineProperty(Element.prototype, 'clearChildren', {
+              configurable: true,
+              enumerable: false,
+              value: function() {
+                while(this.firstChild) this.removeChild(this.lastChild);
+              }
+            });
+          }
+          node.clearChildren();
+        }
+      }
 
-          var place = $('#contacts').append(content);
+      function addClass(id, className) {
+        var node = document.getElementById(id);
+        if (node !== null) {
+          if( typeof Element.prototype.addClass === 'undefined' ) {
+            Object.defineProperty(Element.prototype, 'addClass', {
+              configurable: true,
+              enumerable: false,
+              value: function(className) {
+                if (!this.classList.contains(className)) {
+                  this.classList.add(className);
+                }
+              }
+            });
+          }
+          node.addClass(className);
+        }
+      }
+
+      function removeClass(id, className) {
+        var node = document.getElementById(id);
+        if (node !== null) {
+          if( typeof Element.prototype.removeClass === 'undefined' ) {
+            Object.defineProperty(Element.prototype, 'removeClass', {
+              configurable: true,
+              enumerable: false,
+              value: function(className) {
+                if (this.classList.contains(className)) {
+                  this.classList.remove(className);
+                }
+              }
+            });
+          }
+          node.removeClass(className);
+        }
+      }
+
+      function hide(id) {
+        var node = document.getElementById(id);
+        if (node !== null) {
+          if( typeof Element.prototype.hide === 'undefined' ) {
+            Object.defineProperty(Element.prototype, 'hide', {
+              configurable: true,
+              enumerable: false,
+              value: function() { this.style.display = 'none'; }
+            });
+          }
+          node.hide();
+        }
+      }
+
+      function show(id) {
+        var node = document.getElementById(id);
+        if (node !== null) {
+          if( typeof Element.prototype.show === 'undefined' ) {
+            Object.defineProperty(Element.prototype, 'show', {
+              configurable: true,
+              enumerable: false,
+              value: function() { this.style.display = 'block'; }
+            });
+          }
+          node.show();
+        }
+      }
+
+      function append(id, text) {
+        var node = document.getElementById(id);
+        if (node !== null) {
+          if( typeof Element.prototype.appendText === 'undefined' ) {
+            Object.defineProperty(Element.prototype, 'appendText', {
+              configurable: true,
+              enumerable: false,
+              value: function(text) {
+                if (this.children.length > 0) {
+                  this.lastChild.insertAdjacentHTML('afterend', text);
+                } else {
+                  this.innerHTML = text;
+                }
+              }
+            });
+          }
+          node.appendText(text);
+        }
+      }
+
+      function appendNode(id, nodes) {
+        var node = find(id);
+        if (node !== null) {
+          while (nodes.children.length > 0) {
+            console.log(nodes.children[0]);
+            node.appendChild(nodes.children[0]);
+          }
+        }
+      }
+
+      var find = (id) => document.getElementById(id);
+
+      function fill(templateId, model) {
+        var keyReg = /\{{2}([\w\.]+)\}{2}/g;
+        var template = find(templateId);
+        var keys = [];
+
+        function getValue(path, obj) {
+          if (path.includes('.')) {
+            var _ = path.split('.');
+            return getValue(_.slice(1), obj[_[0]]);
+          } else {
+            return obj[path];
+          }
+        };
+
+        function findKeys(node) {
+          var attr = node.attributes;
+          if (attr !== null && attr !== undefined) {
+            for (var i = 0; i < attr.length; i++) {
+              var item = attr.item(i);
+              var matched = [...item.value.matchAll(keyReg)];
+              if (matched.length > 0) {
+                matched.map(match => keys.push([item, 'nodeValue', item.nodeValue, match[1], match]));
+              }
+            }
+          }
+
+          if (node.childNodes !== undefined && node.childNodes.length > 0) {
+            node.childNodes.forEach(child => { 
+              if (child.nodeName === '#text') {
+                var matched = [...child.data.matchAll(keyReg)];
+                if (matched.length > 0) {
+                  if (child.nextSibling === null && child.previousSibling === null) {
+                    matched.map(match => keys.push([child.parentNode, 'innerHTML', child.data, match[1], match]));
+                  } else {
+                    matched.map(match => keys.push([child, 'data', child.data, match[1], match]));
+                  }
+                }
+              }
+            });
+          }
+
+          if (node.children !== undefined && node.children.length > 0) {
+            for (var index in node.children) {
+              findKeys(node.children[index]);
+            }
+          }
+        };
+
+        var clone = template.cloneNode(true);
+        findKeys(clone.content);
+        console.log(keys);
+
+        keys.forEach(key => 
+          key[0][key[1]] = key[0][key[1]]
+            .replace(key[4][0], getValue(key[3], model)));
+
+        return clone;
+      }
+
+      function addContacts() {
+        appendNode('contacts', fill('contacts_template', contacts).content);
       }
 
       function addCard(card, type) {
         var duration = generateDuration(card.Duration.Start, card.Duration.End, card.Duration.IncludeDetails);
-        var content = '<div class="card" onclick="expandCard(\'' + card.Key + '\', \'' + type + '\')">'
-          + '<div class="card-top-part" >'
-              + '<div class="card-logo-holder"><img src="' + card.Logo + '" alt="Company logo" class="card-logo" /></div>'
-              + '<div class="card-text">'
-                  + '<div class="card-position" >' + card.Position + '</div>'
-                  + '<div class="card-duration">' + duration + '</div>'
-                  + '<div class="card-icons">'
-                      + '<div><a href="' + card.Web + '"  class="black-link">' + card.Company + '</a></div>'
-                      + '<div><a href="' + card.Maps + '"  class="black-link">' + card.Location + '</a></div>'
-                  + '</div>'
-              + '</div>'
-          + '</div>'
-        + '</div>';
-        var place = $('#' + type + '_history').append(content);
+        card.CalculatedDuration = duration;
+        card.Type = type;
+        appendNode(type + '_history', fill('cards_template', card).content);
       }
 
       function addArticle(card, type) {
-        $('#article').empty();
-        $('#article').addClass('fullscreen-article');
-        var duration = generateDuration(card.Duration.Start, card.Duration.End, card.Duration.IncludeDetails);
-        var content = '<div class="fullDescription">'
-            + '<div class="article-header" >'
-                + '<div class="article-close" onclick="closeArticle()"><i class="fa fa-arrow-left" aria-hidden="true"></i><span class="separator"></span><span class="title">' + type + '<span></div>'
-                + '<div class="article-logo-holder"><img src="' + card.Logo + '"" alt="Company logo" class="article-logo" /></div>'
-                + '<div class="article-text">'
-                    + '<div class="card-position" >' + card.Position + '</div>'
-                    + '<div class="card-duration">' + duration + '</div>'
-                    + '<div class="article-links">'
-                      + '<a href="' + card.Web + '" class="black-link"><i class="glyph fa fa-globe"></i>' + card.Company + '</a>'
-                      + '<span class="separator"></span>'
-                      + '<a href="' + card.Maps + '"  class="black-link"><i class="glyph fa fa-map-marker-alt"></i>' + card.Location + '</a>'
-                    + '</div>'
-                + '</div>'
-            + '</div>'
-              + '<div class="article-content">'
-                + '<div class="article-middle-part">'
-                    + '<div>'
-                        + '<span class="article-tag">' + card.Labels.First + ': </span><span class="article-tag-value" >' + card.Industry + '</span>'
-                    + '</div>'
-                    + '<div>'
-                        + '<span class="article-tag">' + card.Labels.Second + ': </span><span class="article-tag-value short" >' + card.Technologies + '</span>'
-                    + '</div>'
-                  + '</div>'
-              + '<div class="article-main">' + card.Markup + '</div>'
-            + '</div>'
-            + '<div class="article-footer"></div>'
-          + '</div>';
-        var place = $('#article').append(content);
+        empty('article');
+        addClass('article', 'fullscreen-article');
+        appendNode('article', fill('article_template', card).content);
       }
 
       function closeArticle() {
-        $('#article').empty();
-        $('#article').removeClass('fullscreen-article');
+        empty('article');
+        removeClass('article', 'fullscreen-article');
       }
 
       function expandCard(key, type) {
@@ -890,19 +1078,15 @@
         addEducation();
       }
 
-      // todo: Implement hide/show without jquery
-      // jquery implementation has no animation, just because
-      // they set style "display: none|block" to the element.
-      // Toggling between hidden css class has the animation.
       function toggleTimeline() {
-        $('#article').empty();
+        empty('article');
         var target = event.target;
         if (target.id === types.xp) {
-          $('#' + types.xp + '_history').show();
-          $('#' + types.edu + '_history').hide();
+          show(types.xp + '_history');
+          hide(types.edu + '_history');
         } else {
-          $('#' + types.edu + '_history').show();
-          $('#' + types.xp + '_history').hide();
+          show(types.edu + '_history');
+          hide(types.xp + '_history');
         }
       }
 
